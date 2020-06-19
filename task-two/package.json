@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config build-utils/dev.config.js",
-    "prod": "webpack-dev-server --config build-utils/prod.config.js",
-    "start": "webpack-dev-server --mode development --open"
+    "start": "webpack-dev-server --config webpack.dev.config.js",
+    "build": "webpack --config webpack.prod.config.js",
+    "prod": "npx serve -s dist",
+    "PROD": "npm run build && npm run prod"
   },
   "keywords": [],
   "author": "Richard Danis",
