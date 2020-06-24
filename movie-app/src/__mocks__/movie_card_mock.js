@@ -10,7 +10,7 @@ export const MovieCategories = {
 export const MovieCards = [
     {
         id: 123,
-        title: 'Avanagers',
+        title: 'Avangers',
         releaseYear: 2020,
         category: MovieCategories.ACTION,
         img: "https://static.posters.cz/image/750/ueveg-keretes-plakat-avengers-infinity-war-one-sheet-i69678.jpg"
