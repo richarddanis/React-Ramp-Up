@@ -1,6 +1,7 @@
 import React from "react";
 import {MovieCategories} from "../../../../__mocks__/movie_card_mock";
 import {ErrorBoundary} from "../../../error/ErrorBoundary";
+import PropTypes from "prop-types";
 
 const CategoryButton = () => (
     Object.entries(MovieCategories).map(([key, value]) => (
@@ -24,3 +25,7 @@ export default function FilterableMovie(movieCategories) {
         </div>
     );
 }
+
+FilterableMovie.propTypes = {
+    movieCategories: PropTypes.array
+};
