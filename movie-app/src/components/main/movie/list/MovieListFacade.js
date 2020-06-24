@@ -1,5 +1,6 @@
 import React from "react";
 import {MovieCards} from "../../../../__mocks__/movie_card_mock.js"
+import {MissingMoviesErrorBoundary} from "../../../error/MissingMoviesErrorBoundary";
 
 function RenderCards() {
     return (
@@ -42,7 +43,9 @@ export class MovieListFacade extends React.Component {
                     <span style={{fontWeight: 'bold'}}>X</span> movies found
                 </p>
                 <div className="uk-child-width-1-3@m" data-uk-grid>
-                    <RenderCards/>
+                    <MissingMoviesErrorBoundary>
+                        <RenderCards/>
+                    </MissingMoviesErrorBoundary>
                 </div>
             </div>
         );

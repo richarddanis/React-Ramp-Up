@@ -1,6 +1,6 @@
 import React from "react";
 import {MovieCategories} from "../../../../__mocks__/movie_card_mock";
-import {ErrorBoundary} from "../../../error/ErrorBoundary";
+import {MissingMoviesErrorBoundary} from "../../../error/MissingMoviesErrorBoundary";
 import PropTypes from "prop-types";
 
 const CategoryButton = () => (
@@ -17,11 +17,11 @@ const CategoryButton = () => (
 export default function FilterableMovie(movieCategories) {
     return (
         <div>
-            <ErrorBoundary>
+            <MissingMoviesErrorBoundary>
                 <div className="uk-button-group">
                     <CategoryButton movieCategories={movieCategories}/>
                 </div>
-            </ErrorBoundary>
+            </MissingMoviesErrorBoundary>
         </div>
     );
 }
