@@ -1,5 +1,6 @@
 import React from "react";
 import {MovieCategories} from "../../../../__mocks__/movie_card_mock";
+import {ErrorBoundary} from "../../../error/ErrorBoundary";
 
 const CategoryButton = () => (
     Object.entries(MovieCategories).map(([key, value]) => (
@@ -15,9 +16,11 @@ const CategoryButton = () => (
 export default function FilterableMovie(movieCategories) {
     return (
         <div>
-            <div className="uk-button-group">
-                <CategoryButton movieCategories={movieCategories}/>
-            </div>
+            <ErrorBoundary>
+                <div className="uk-button-group">
+                    <CategoryButton movieCategories={movieCategories}/>
+                </div>
+            </ErrorBoundary>
         </div>
     );
 }
