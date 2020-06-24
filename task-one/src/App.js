@@ -11,7 +11,7 @@ export class App extends Component {
         return (
             <React.StrictMode>
                 <HelloCreateElement message={helloMessage('createElement')}/>
-                <HelloFunction />
+                <HelloFunction message={helloMessage('Function')}/>
                 <HelloCreateComponent message={helloMessage('Component')}/>
                 <HelloPureComponent message={helloMessage('PureComponent')}/>
             </React.StrictMode>
