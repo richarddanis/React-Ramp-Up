@@ -1,5 +1,5 @@
 import React from "react";
-import ImageDB from "../../resources/header-image.jpg"
+import ImageDB from "../../assets/header-image.jpg"
 import AddNewMovie from "./populator/AddNewMovie";
 import SearchBar from "./search/SearchBar";
 import NetflixRouletteName from "../util/NetflixRouletteName";
