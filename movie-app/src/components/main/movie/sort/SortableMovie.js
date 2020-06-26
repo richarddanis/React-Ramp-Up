@@ -10,7 +10,7 @@ export default function SortableMovie() {
                 </button>
                 <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
                     <ul className="uk-nav uk-dropdown-nav">
-                        <li className="uk-active"><a href="#">Active</a></li>
+                        <li className="uk-active"></li>
                     </ul>
                 </div>
             </div>
