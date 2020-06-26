@@ -1,13 +1,14 @@
-import React, {useState} from "react";
+import React, {useState, useContext} from "react";
 import HandlerButton from "../../../util/HandlerButton";
 import Card from "../../../util/Card";
+import MovieContext from "../../../../context/movieContext";
 
-function EditSection({event, name, movieId}) {
+function EditSection({name, movieId}) {
     return (
         <div>
                 <form>
                             <div className="uk-margin">
-                                <h3 style={{color: 'white'}} className="uk-card-title">EDIT THE MOVIE</h3>
+                                <h3 style={{color: 'white'}} className="uk-card-title">ADD NEW MOVIE</h3>
                                 <label className="uk-form-label" htmlFor="form-stacked-text">
                                         <span>MOVIE ID</span>
                                     </label>
@@ -95,7 +96,7 @@ function EditSection({event, name, movieId}) {
                                                         color: 'white',
                                                         borderColor: 'transparent'
                                                     }}
-                                                     eventName={event} name={name} movieId={movieId}/>
+                                                     name={name} movieId={movieId}/>
                                         </div>
                                     </div>
                                 </div>
@@ -106,17 +107,17 @@ function EditSection({event, name, movieId}) {
     );
 }
 
-function DeleteSection({event, name, movieId}) {
+function DeleteSection({movieId}) {
     return (
         <div>
             <h1>Delete movie</h1>
             <p>Are you sure want to delete the movie?</p>
-            <HandlerButton eventName={event} name={'Confirm'} movieId={movieId}/>
+            <HandlerButton name={'Confirm'} movieId={movieId}/>
         </div>
     )
 }
 
-function CardActions({event, name, movieId}) {
+function CardActions({name, movieId}) {
     const [showAction,
         setAction] = useState(false);
     return (
@@ -140,7 +141,7 @@ function CardActions({event, name, movieId}) {
                         closeEvent={() => setAction(!showAction)}
                         id={movieId}>
                         {{
-                            'Edit': <EditSection event={event} name={name} movieId={movieId}/>,
+                            'Edit': <EditSection name={name} movieId={movieId}/>,
                             'Delete': <DeleteSection/>
                         }[name]
 }
@@ -151,10 +152,10 @@ function CardActions({event, name, movieId}) {
     );
 }
 
-function MovieCard({movie, deleteEvent, editEvent}) {
+function MovieCard({movie}) {
     const [showMovieActions,
         setMovieActionVisibility] = useState(false);
-
+    
     return (
         <div key={movie.id}>
             <div
@@ -180,8 +181,8 @@ function MovieCard({movie, deleteEvent, editEvent}) {
                                 showCard={showMovieActions}
                                 closeEvent={() => setMovieActionVisibility(!showMovieActions)}
                                 id={movie.id}>
-                                <CardActions event={editEvent} name={'Edit'} movieId={movie.id}/>
-                                <CardActions event={deleteEvent} name={'Delete'} movieId={movie.id}/>
+                                <CardActions name={'Edit'} movieId={movie.id}/>
+                                <CardActions name={'Delete'} movieId={movie.id}/>
                             </Card>
                         </div> </>}
                     </div>
