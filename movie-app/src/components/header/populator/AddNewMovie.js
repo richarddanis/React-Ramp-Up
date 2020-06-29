@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import "../../../style/move-form.css";
 import MovieForm from "../../form/MovieForm";
+import Card from "../../util/Card";
+import HandlerButton from "../../util/HandlerButton";
 
 export default function AddNewMovie() {
     const [showMovieForm,
@@ -10,41 +12,33 @@ export default function AddNewMovie() {
         <div>
             <div>
                 <div className="uk-position-medium uk-position-right ">
-                    <button
-                        className="uk-button uk-border-rounded"
-                        style={{
-                        backgroundColor: 'transparent'
-                    }}
-                        onClick={() => setMoveFormVisibility(!showMovieForm)}>
-                        <span
-                            style={{
-                            color: 'white'
-                        }}>+ ADD MOVIE</span>
-                    </button>
+                <HandlerButton
+                            eventName={() => setMoveFormVisibility(!showMovieForm)}
+                            name={'+ ADD MOVIE'}
+                            movieId={null}/>
                 </div>
             </div>
 
             {showMovieForm && <> <div className="uk-position-z-index uk-position-absolute">
                 <div
-                    className="uk-card-default uk-card-body uk-width-xlarge"
                     style={{
-                    backgroundColor: '#232323'
+                    backgroundColor: '#0008',
+                    width: '100%',
+                    height: '100%',
+                    zIndex: 10,
+                    top: 0,
+                    left: 0,
+                    position: 'fixed'
                 }}>
-                    <MovieForm movieId={null}/>
-                    <div className="uk-card-badge">
-                        <button
-                            onClick={() => setMoveFormVisibility(!showMovieForm)}
-                            className="uk-button uk-button-default uk-border-rounded"
-                            style={{
-                            backgroundColor: 'transparent',
-                            color: 'white',
-                            borderColor: 'transparent'
-                        }}>
-                            X - close
-                        </button>
+                        <div className="uk-position-center">
+                            <Card showCard={showMovieForm}
+                                  closeEvent={() => setMoveFormVisibility(!showMovieForm)}>
+                                       <MovieForm movieId={null} title={'ADD NEW MOVIE'}/>
+                            </Card>
+                        </div>
                     </div>
-                </div>
-            </div> </>}
+            </div> </>
+            }
         </div>
     );
 }

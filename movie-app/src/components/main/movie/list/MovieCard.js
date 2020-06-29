@@ -37,7 +37,7 @@ function CardActions({name, movieId}) {
                         closeEvent={() => setAction(!showAction)}
                         id={movieId}>
                         {{
-                            'Edit': <MovieForm name={name} movieId={movieId}/>,
+                            'Edit': <MovieForm name={name} movieId={movieId} title={'EDIT MOVIE'}/>,
                             'Delete': <DeleteSection/>
                         }[name]}
                     </Card>

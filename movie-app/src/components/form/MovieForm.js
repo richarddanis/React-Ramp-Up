@@ -3,7 +3,7 @@ import Input from "./input";
 import Select from "./select";
 import HandlerButton from "../util/HandlerButton";
 
-function MovieForm({name, movieId}) {
+function MovieForm({name, movieId, title}) {
 
     const genderOptions = ["Male", "Female"];
 
@@ -15,7 +15,7 @@ function MovieForm({name, movieId}) {
                         style={{
                         color: 'white'
                     }}
-                        className="uk-card-title">ADD NEW MOVIE</h3>
+                className="uk-card-title">{title}</h3>
                     {/* Movie Id*/}
                     {movieId !== null && <Input
                         title={"MOVIE ID"}
