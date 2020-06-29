@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import HandlerButton from "../../../util/HandlerButton";
 import Card from "../../../util/Card";
 import MovieForm from "../../../form/MovieForm";
+import { useCountRender } from "../../../util/useCountRender";
 
 function DeleteSection({movieId}) {
     return (
         <div>
-            <h1>Delete movie</h1>
+            <h1 style={{color: 'white'}}>Delete movie</h1>
             <p>Are you sure want to delete the movie?</p>
             <HandlerButton name={'Confirm'} movieId={movieId}/>
         </div>
@@ -47,13 +48,16 @@ function CardActions({name, movieId}) {
     );
 }
 
-function MovieCard({movie}) {
+function MovieCard({movie, detailsEvent}) {
     const [showMovieActions,
         setMovieActionVisibility] = useState(false);
-    
+
+    useCountRender(movie.id);
+
     return (
-        <div key={movie.id}>
+        <div>
             <div
+                onClick={() => detailsEvent(movie.id)}
                 className="uk-card uk-card-default"
                 style={{
                 backgroundColor: 'transparent',
@@ -102,4 +106,4 @@ function MovieCard({movie}) {
     )
 }
 
-export default MovieCard;
+export default React.memo(MovieCard);

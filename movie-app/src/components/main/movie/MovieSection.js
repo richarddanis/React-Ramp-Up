@@ -48,12 +48,11 @@ function MovieSection() {
                                         .movies
                                         .map((movie) => {
                                             return <MovieCard
-                                                movie={movie}/>
+                                            key={movie.id} movie={movie} detailsEvent={context.detailsEvent}/>
                                         })}
                                 </div>
                             </div>
                         </div>
-                
             }
             </MovieContext.Consumer>
         </div>

@@ -3,6 +3,7 @@ import "../../../style/move-form.css";
 import MovieForm from "../../form/MovieForm";
 import Card from "../../util/Card";
 import HandlerButton from "../../util/HandlerButton";
+import Input from "../../form/input";
 
 export default function AddNewMovie() {
     const [showMovieForm,
