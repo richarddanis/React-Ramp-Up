@@ -3,7 +3,7 @@ import React from "react";
 const Select = props => {
     return (
         <div className="uk-margin">
-            <label className="uk-form-label" htmlFor={props.name}>
+            <label htmlFor={props.name}>
                 <span>{props.title}</span>
             </label>
             <div style={{backgroundColor: 'white'}}>

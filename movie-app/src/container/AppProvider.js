@@ -1,7 +1,7 @@
 import MovieContext from '../context/movieContext';
 import React from 'react';
 
-class MovieProvider extends React.Component{
+class AppProvider extends React.Component{
 
     state = {
         movies: [
@@ -29,7 +29,8 @@ class MovieProvider extends React.Component{
             'Comedy',
             'Horror',
             'Crime'
-        ]
+        ],
+        genderOptions: ['MALE', 'FEMALE']
     }
     
     render(){
@@ -44,4 +45,4 @@ class MovieProvider extends React.Component{
     }
 }
 
-export default MovieProvider;
+export default AppProvider;
