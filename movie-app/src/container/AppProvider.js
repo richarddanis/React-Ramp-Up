@@ -1,7 +1,7 @@
 import MovieContext from '../context/movieContext';
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 
-function AppProvider() {
+function AppProvider(props) {
 
     const [movies, setMovies] = useState([
         {
@@ -30,18 +30,29 @@ function AppProvider() {
         'Crime'
     ])
 
-    const showDetails = (id) => {
-        return console.log(id);
-    }
+    const [details, setDetails] = useState()
+
+    const showDetails = useCallback( 
+        index => { const movieArray = movies.filter(movie => movie.id === index)
+            let movie = null;
+            if(movieArray !== null){
+                movie = movieArray[0];
+            }
+            return setDetails(movie);
+        }
+            ,[]
+    );
 
     return (
         <MovieContext.Provider
             value={{
             movies: movies,
             categories: categories,
+            movieDetail: details,
             detailsEvent: showDetails
         }}>
-            {this.props.children}
+            {console.log(details)}
+            {props.children}
         </MovieContext.Provider>
     )
 }

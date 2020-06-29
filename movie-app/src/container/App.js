@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from "../components/footer/Footer";
-import {HeaderFacade} from "../components/header/HeaderFacade";
+import HeaderFacade from "../components/header/HeaderFacade";
 import MovieSection from "../components/main/movie/MovieSection";
 import AppProvider from "./AppProvider";
 

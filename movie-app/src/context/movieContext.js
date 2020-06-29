@@ -4,8 +4,7 @@ const movieContext = React.createContext({
     movies: [],
     categories: [],
     detailsEvent: () => {},
-    deleteEvent: () => {},
-    editEvent: () => {}
+    movieDetail: {}
 });
 
 export default movieContext;
