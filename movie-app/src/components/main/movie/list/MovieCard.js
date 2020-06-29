@@ -1,7 +1,6 @@
-import React, {useState, useContext} from "react";
+import React, {useState} from "react";
 import HandlerButton from "../../../util/HandlerButton";
 import Card from "../../../util/Card";
-import MovieContext from "../../../../context/movieContext";
 
 function EditSection({name, movieId}) {
     return (
@@ -16,7 +15,6 @@ function EditSection({name, movieId}) {
                                         <input className="uk-input" id="form-stacked-text" type="text"
                                                 placeholder="disabled" value={movieId} data-disabled/>
                                     </div>
-
                                 <div className="uk-margin">
                                     <label className="uk-form-label" htmlFor="form-stacked-text">
                                         <span>TITLE</span>
@@ -143,8 +141,7 @@ function CardActions({name, movieId}) {
                         {{
                             'Edit': <EditSection name={name} movieId={movieId}/>,
                             'Delete': <DeleteSection/>
-                        }[name]
-}
+                        }[name]}
                     </Card>
                 </div>
             </div> </>}

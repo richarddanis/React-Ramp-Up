@@ -7,7 +7,6 @@ import MovieProvider from "./MovieProvider";
 class App extends React.Component {
 
     render() {
-
         return (
             <MovieProvider>
                 <div className="uk-container-expand">
