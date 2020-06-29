@@ -1,10 +1,13 @@
 import React, {useState} from "react";
 import "../../../style/move-form.css";
 import Input from "../../form/input";
+import Select from "../../form/select";
 
 export default function AddNewMovie() {
     const [showMovieForm,
         setMoveFormVisibility] = useState(false);
+
+    const genderOptions = ["Male", "Female"];
 
     return (
         <div>
@@ -65,24 +68,12 @@ export default function AddNewMovie() {
                                 placeholder={'Movie URL here...'}
                                 title={'MOVIE URL'}/>
                             {/* Gender option */}
-                            <div className="uk-margin">
-                                <label className="uk-form-label" htmlFor="form-stacked-text">
-                                    <span>GENRE</span>
-                                </label>
-                                <div>
-                                    <div uk-form-custom="target: > * > span:first-child">
-                                        <select>
-                                            <option value="">Please select...</option>
-                                            <option value="1">Option 01</option>
-                                            <option value="2">Option 02</option>
-                                        </select>
-                                        <button className="uk-button uk-button-default" type="button" tabIndex="-1">
-                                            <span></span>
-                                            <span uk-icon="icon: chevron-down"></span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+                            <Select 
+                                options={genderOptions}
+                                placeholder={"Select gender..."}
+                                title={"GENDER"}
+                                name={"gender"}
+                            />
                             {/* Overview */}
                             <Input
                                 name={"overview"}
