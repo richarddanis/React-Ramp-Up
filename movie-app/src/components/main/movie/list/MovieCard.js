@@ -1,109 +1,7 @@
 import React, {useState} from "react";
 import HandlerButton from "../../../util/HandlerButton";
 import Card from "../../../util/Card";
-
-function EditSection({name, movieId}) {
-    return (
-        <div>
-                <form>
-                            <div className="uk-margin">
-                                <h3 style={{color: 'white'}} className="uk-card-title">ADD NEW MOVIE</h3>
-                                <label className="uk-form-label" htmlFor="form-stacked-text">
-                                        <span>MOVIE ID</span>
-                                    </label>
-                                    <div className="uk-form-controls">
-                                        <input className="uk-input" id="form-stacked-text" type="text"
-                                                placeholder="disabled" value={movieId} data-disabled/>
-                                    </div>
-                                <div className="uk-margin">
-                                    <label className="uk-form-label" htmlFor="form-stacked-text">
-                                        <span>TITLE</span>
-                                    </label>
-                                    <div className="uk-form-controls">
-                                        <input className="uk-input" id="form-stacked-text" type="text"
-                                               placeholder="Some text..."/>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div className="uk-margin">
-                                        <label className="uk-form-label" htmlFor="form-stacked-text">
-                                            <span>RELEASE DATE</span>
-                                        </label>
-                                        <div className="uk-form-controls">
-                                            <input className="uk-input" id="form-stacked-text" type="text"
-                                                   placeholder="Movie URL here..."/>
-                                        </div>
-                                    </div>
-                                    <label className="uk-form-label" htmlFor="form-stacked-text">
-                                        <span>MOVIE URL</span>
-                                    </label>
-                                    <div className="uk-form-controls">
-                                        <input className="uk-input" id="form-stacked-text" type="text"
-                                               placeholder="Movie URL here..."/>
-                                    </div>
-                                    <div className="uk-margin">
-                                        <label className="uk-form-label" htmlFor="form-stacked-text">
-                                            <span>GENRE</span>
-                                        </label>
-                                        <div>
-                                            <div uk-form-custom="target: > * > span:first-child">
-                                                <select>
-                                                    <option value="">Please select...</option>
-                                                    <option value="1">Option 01</option>
-                                                    <option value="2">Option 02</option>
-                                                </select>
-                                                <button className="uk-button uk-button-default" type="button"
-                                                        tabIndex="-1">
-                                                    <span></span>
-                                                    <span uk-icon="icon: chevron-down"></span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="uk-margin">
-                                        <label className="uk-form-label" htmlFor="form-stacked-text">
-                                            <span>OVERVIEW</span>
-                                        </label>
-                                        <div className="uk-form-controls">
-                                            <input className="uk-input" id="form-stacked-text" type="text"
-                                                   placeholder="Overview here"/>
-                                        </div>
-                                    </div>
-                                    <div className="uk-margin">
-                                        <label className="uk-form-label" htmlFor="form-stacked-text">
-                                            <span>RUNTIME</span>
-                                        </label>
-                                        <div className="uk-form-controls">
-                                            <input className="uk-input" id="form-stacked-text" type="text"
-                                                   placeholder="Runtime here..."/>
-                                        </div>
-                                    </div>
-                                    <div className="uk-button-group uk-margin uk-float-right">
-                                        <div className="uk-padding-small">
-                                            <button className="uk-button uk-button-default uk-border-rounded" style={{
-                                                backgroundColor: 'transparent',
-                                                borderColor: '#F65261',
-                                                color: '#F65261'
-                                            }}>
-                                                Reset
-                                            </button>
-                                        </div>
-                                        <div className="uk-padding-small">
-                                            <HandlerButton style={{
-                                                        backgroundColor: '#F65261',
-                                                        color: 'white',
-                                                        borderColor: 'transparent'
-                                                    }}
-                                                     name={name} movieId={movieId}/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-           
-        </div>
-    );
-}
+import MovieForm from "../../../form/MovieForm";
 
 function DeleteSection({movieId}) {
     return (
@@ -139,7 +37,7 @@ function CardActions({name, movieId}) {
                         closeEvent={() => setAction(!showAction)}
                         id={movieId}>
                         {{
-                            'Edit': <EditSection name={name} movieId={movieId}/>,
+                            'Edit': <MovieForm name={name} movieId={movieId}/>,
                             'Delete': <DeleteSection/>
                         }[name]}
                     </Card>

@@ -1,16 +1,16 @@
 import React from "react";
 
-function HandlerButton({eventName, name, movieId}) {
+const HandlerButton = props => {
     return (
         <button
             onClick={(event) => {
-            eventName(event, movieId)
+            props.eventName(event, props.movieId)
         }}
             className="uk-button"
             style={{
             backgroundColor: 'transparent'
         }}>
-            {name}
+            {props.name}
         </button>
     );
 }
