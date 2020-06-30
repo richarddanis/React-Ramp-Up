@@ -35,12 +35,8 @@ function AppProvider(props) {
     const [details, setDetails] = useState()
 
     const showDetails = useCallback( 
-        index => { const movieArray = movies.filter(movie => movie.id === index)
-            let movie = null;
-            if(movieArray !== null){
-                movie = movieArray[0];
-            }
-            return setDetails(movie);
+        index => { 
+            return setDetails(movies.filter(movie => movie.id === index).shift());
         }
             ,[]
     );
