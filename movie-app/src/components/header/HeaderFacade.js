@@ -23,14 +23,22 @@ function SearchHeader(){
 
 function MovieDetail({movie, detailsEvent}){
     return(
-        <div className="uk-container-expand uk-panel">
+        <div className="uk-container-expand uk-panel" >
             <Card closeEvent={() => detailsEvent(null)}>
                  <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
                     <NetflixRouletteName/>
                 </div>
-                <div>
-                {movie.title}
-                </div>
+                    <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
+                        <div class="uk-card-media-left uk-cover-container">
+                            <img src={`${movie.img}`} alt="" data-uk-cover/>
+                            <canvas width="" height=""></canvas>
+                        </div>
+                        <div class="uk-card-body" style={{color: 'white'}}>
+                            <h3 style={{color:'white'}} class="uk-card-title">{movie.title}</h3>
+                            <span style={{color: '#F65261'}}>{movie.releaseYear}</span>
+                            <p>{movie.description}</p>
+                        </div>
+                    </div>
             </Card>
         </div>
     );
