@@ -34,14 +34,14 @@ function AppProvider(props) {
         'Crime'
     ])
 
-    useEffect(() => {setMovies(mockMovies)}, [])
-
     const [details, setDetails] = useState()
 
     const showDetails = useCallback( 
         index => {return setDetails(movies.filter(movie => movie.id === index).shift());}
             ,[movies]
     );
+
+    useEffect(() => {setMovies(mockMovies)}, [])
 
     return (
         <MovieContext.Provider
@@ -51,7 +51,6 @@ function AppProvider(props) {
             movieDetail: details,
             detailsEvent: showDetails
         }}>
-            {console.log(details)}
             {props.children}
         </MovieContext.Provider>
     )
