@@ -12,11 +12,12 @@ import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 
 const rootReducer = combineReducers({
-    details: detailsReducer,
-    movie: movieReducer
+     detailsReducer, 
+     movies: movieReducer
 })
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, 
+     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
 

@@ -57,7 +57,7 @@ function MovieCard({movie, detailsEvent}) {
     return (
         <div>
             <div
-                onClick={() => detailsEvent(movie.id)}
+                onClick={detailsEvent}
                 className="uk-card uk-card-default"
                 style={{
                 backgroundColor: 'transparent',

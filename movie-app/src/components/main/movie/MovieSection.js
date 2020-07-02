@@ -2,9 +2,37 @@ import React from "react";
 import SortableMovie from "./sort/SortableMovie";
 import MovieCard from "./list/MovieCard";
 import FilterButton from "./filter/FilterButton";
-import MovieContext from "../../../context/movieContext";
+import {useSelector, useDispatch} from 'react-redux';
+import * as actionType from '../../../store/actions/actions'
 
-function AddMovieNumber({movieLength}) {
+const categories = [
+    {
+        id: 'b1',
+        title: 'All'
+    },
+    {
+        id: 'b2',
+        title: 'Action'
+    },
+    {
+        id: 'b3',
+        title: 'Documentary'
+    },
+    {
+        id: 'b4',
+        title: 'Comedy'
+    },
+    {
+        id: 'b5',
+        title: 'Horror'
+    },
+    {
+        id: 'b6',
+        title: 'Crime'
+    }
+]
+
+function MovieNumber({movieLength}) {
     return (
         <div>
             <p style={{
@@ -20,43 +48,42 @@ function AddMovieNumber({movieLength}) {
     );
 }
 
-function MovieSection() {
+
+export const MovieSection = () => {
+    const movies = useSelector(state => state.movies.movies);
+    const dispatch = useDispatch();
+
+    const sortAction = (type) => {
+        console.log(type);
+        dispatch({type: actionType.SORT})
+    }
+
+    const filterAction = (id) => {
+        console.log(id);
+        dispatch({type: actionType.FILTER})
+    }
+
     return (
-        <div className="uk-container-expand uk-padding uk-panel"
-        style={{
-        backgroundColor: '#232323'}}>
-            <MovieContext.Consumer>
-                {(context) => 
-                        <div>
-                            <div className="uk-child-width-expand" data-uk-grid>
-                                <div>
-                                    <div className="uk-button-group">
-                                        {context
-                                            .categories
-                                            .map((category) => {
-                                                return <FilterButton category={category}/>
-                                            })}
-                                    </div>
-                                </div>
-                                <SortableMovie/>
-                            </div>
-                            <hr/>
-                            <div>
-                                <AddMovieNumber movieLength={context.movies.length}/>
-                                <div className="uk-child-width-1-3@m" data-uk-grid>
-                                    {context
-                                        .movies
-                                        .map((movie) => {
-                                            return <MovieCard
-                                            key={movie.id} movie={movie} detailsEvent={context.detailsEvent}/>
-                                        })}
-                                </div>
-                            </div>
+        <div
+            className="uk-container-expand uk-padding uk-panel"
+            style={{
+            backgroundColor: '#232323'
+        }}>
+                <div className="uk-child-width-expand" data-uk-grid>
+                        <div className="uk-button-group">
+                            {categories.map((category) => {
+                                return <FilterButton key={category.id} title={category.title} filterAction= {() => filterAction(category.id)}/>
+                            })}
                         </div>
-            }
-            </MovieContext.Consumer>
+                    <SortableMovie sortAction={sortAction}/>
+                </div>
+                <hr/>
+                    <MovieNumber movieLength={movies.length}/>
+                    <div className="uk-child-width-1-3@m" data-uk-grid>
+                        {movies.map((movie) => {
+                            return <MovieCard key={movie.id} movie={movie} detailsEvent={null}/>
+                        })}
+                    </div>
         </div>
     )
 }
-
-export default MovieSection;

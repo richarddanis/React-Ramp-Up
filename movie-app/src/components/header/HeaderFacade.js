@@ -3,7 +3,6 @@ import ImageDB from "../../assets/header-image.jpg"
 import AddNewMovie from "./populator/AddNewMovie";
 import SearchBar from "./search/SearchBar";
 import NetflixRouletteName from "../util/NetflixRouletteName";
-import MovieContext from "../../context/movieContext";
 import Card from "../util/Card";
 
 function SearchHeader(){
@@ -44,13 +43,20 @@ function MovieDetail({movie, detailsEvent}){
     );
 }
 
-function HeaderFacade() {
-        return (
+{/*
             <MovieContext.Consumer>
                 {(context) =>
                     context.movieDetail?.id ? <MovieDetail movie={context.movieDetail} detailsEvent={context.detailsEvent}/> : <SearchHeader/>
                 }
             </MovieContext.Consumer>
+            */}
+
+function HeaderFacade() {
+        return (
+            
+            <div>
+            <SearchHeader />
+            </div>
         );
 }
 

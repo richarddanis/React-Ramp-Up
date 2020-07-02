@@ -1,17 +1,17 @@
 import React from "react";
 
-function FilterButton({category}) {
+function FilterButton({title, filterAction}) {
     return (
         <div>
                 <button className="uk-button"
-                            onClick={() => console.log('Clicked button is:')}
+                            onClick={filterAction}
                             style={{
                             backgroundColor: "transparent"
                         }}>
                             <span
                                 style={{
                                 color: "white"
-                            }}>{category}
+                            }}>{title}
                             </span>
                             </button>
         </div>

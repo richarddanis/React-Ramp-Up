@@ -1,4 +1,4 @@
-import * as actionType from '../actions';
+import * as actionType from '../actions/actions';
 
 const initialState = {details: []};
 
@@ -12,6 +12,7 @@ const details = (state = initialState, action) => {
                 details: []
             };
     }
+    return state;
 }
 
 export default details;

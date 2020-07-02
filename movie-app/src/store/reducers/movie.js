@@ -1,7 +1,7 @@
-import * as actionType from '../actions';
+import * as actionType from '../actions/actions';
 
 const initialState = {
-    movies: [
+    movies:[
         {
             id: 'a1b1',
             title: 'Avangers',
@@ -36,16 +36,15 @@ const movie = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
         case actionType.FILTER:
-            console.log('FILTER');
+            const updatedArray = state.movies.filter(movie => movie.id !== 'a1b2');
             return {
                 ...state,
-                movies: state.movies
+                movies: updatedArray
             }
         case actionType.SORT:
-            console.log('SORT');
             return {
                 ...state,
-                movies: state.movies
+                state
             }
     }
     return state;
