@@ -9,7 +9,7 @@ const genres = [
     {
         id: 'b1',
         title: 'All',
-        value: 'All'
+        value: ''
     }, {
         id: 'b2',
         title: 'Action',
@@ -54,15 +54,21 @@ export const MovieSection = () => {
     const dispatch = useDispatch();
 
     const sortAction = (value) => {
-        dispatch(actionType.sortMovies(value))
+        const queryParam = '?sortOrder=ASC&sortBy=' + value;
+        dispatch(actionType.fetchMovies(queryParam))
     }
 
     const filterAction = (value) => {
-        dispatch(actionType.filterMovies(value));
+        const queryParam = '?filter=' + value;
+        dispatch(actionType.fetchMovies(queryParam));
+    }
+
+    const movieDetailsAction = (movieId) =>{
+        dispatch(actionType.movieDetails(movieId));
     }
 
     useEffect(() => {
-        dispatch(actionType.initMovies())
+        dispatch(actionType.fetchMovies())
     }, [dispatch]);
 
     return (
@@ -77,8 +83,7 @@ export const MovieSection = () => {
                         return <FilterButton
                             key={category.id}
                             title={category.title}
-                            filterAction=
-                            {() => filterAction(category.value)}/>
+                            filterAction={() => filterAction(category.value)}/>
                     })}
                 </div>
                 <SortableMovie sortAction={sortAction}/>
@@ -87,7 +92,7 @@ export const MovieSection = () => {
             <MovieNumber movieLength={movies.length}/>
             <div className="uk-child-width-1-3@m" data-uk-grid>
                 {movies.map((movie) => {
-                    return <MovieCard key={movie.id} movie={movie} detailsEvent={null}/>
+                    return <MovieCard key={movie.id} movie={movie} detailsEvent={movieDetailsAction}/>
                 })}
             </div>
         </div>

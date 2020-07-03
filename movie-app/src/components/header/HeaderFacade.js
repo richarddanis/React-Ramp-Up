@@ -4,6 +4,8 @@ import AddNewMovie from "./populator/AddNewMovie";
 import SearchBar from "./search/SearchBar";
 import NetflixRouletteName from "../util/NetflixRouletteName";
 import Card from "../util/Card";
+import {useSelector, shallowEqual} from 'react-redux';
+
 
 function SearchHeader(){
     return (
@@ -20,22 +22,23 @@ function SearchHeader(){
     );
 }
 
-function MovieDetail({movie, detailsEvent}){
+function MovieDetail({movie}){
     return(
         <div className="uk-container-expand uk-panel" >
-            <Card closeEvent={() => detailsEvent(null)}>
+            <Card closeEvent={() => console.log}> {/*detailsEvent(null) */}
                  <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
                     <NetflixRouletteName/>
                 </div>
                     <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
                         <div class="uk-card-media-left uk-cover-container">
-                            <img src={`${movie.img}`} alt="" data-uk-cover/>
+                            <img src={`${movie.poster_path}`} alt="" data-uk-cover/>
                             <canvas width="" height=""></canvas>
                         </div>
                         <div class="uk-card-body" style={{color: 'white'}}>
-                            <h3 style={{color:'white'}} class="uk-card-title">{movie.title}</h3>
-                            <span style={{color: '#F65261'}}>{movie.releaseYear}</span>
-                            <p>{movie.description}</p>
+                            <h3 style={{color:'white'}} class="uk-card-title">{[`${movie.title}`,`${movie.vote_average}`].join(' ')}</h3>
+                            <p>{movie.genres.map(genre => genre).join(' & ')}</p>
+                            <span style={{color: '#F65261'}}>{movie.release_date}</span>
+                            <p>{movie.overview}</p>
                         </div>
                     </div>
             </Card>
@@ -43,19 +46,12 @@ function MovieDetail({movie, detailsEvent}){
     );
 }
 
-{/*
-            <MovieContext.Consumer>
-                {(context) =>
-                    context.movieDetail?.id ? <MovieDetail movie={context.movieDetail} detailsEvent={context.detailsEvent}/> : <SearchHeader/>
-                }
-            </MovieContext.Consumer>
-            */}
-
 function HeaderFacade() {
+    const movieDetails = useSelector(state => state.detailsReducer.details, shallowEqual);
+    console.log('H: ',movieDetails);
         return (
-            
             <div>
-            <SearchHeader />
+            {movieDetails.id? <MovieDetail movie={movieDetails}/> : <SearchHeader />}
             </div>
         );
 }

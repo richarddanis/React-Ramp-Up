@@ -7,16 +7,6 @@ const initialState = {
 const movie = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
-        case actionType.FILTER_MOVIE:
-            return {
-                ...state,
-                state
-            }
-        case actionType.SORT_MOVIE:
-            return {
-                ...state,
-                state
-            }
         case actionType.FETCH_MOVIE:
             return {
                 ...state,

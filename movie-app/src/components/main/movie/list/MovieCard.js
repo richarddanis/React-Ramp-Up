@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import HandlerButton from "../../../util/HandlerButton";
 import Card from "../../../util/Card";
 import MovieForm from "../../../form/MovieForm";
-import { useCountRender } from "../../../util/useCountRender";
 
 function DeleteSection({movieId}) {
     return (
@@ -52,12 +51,10 @@ function MovieCard({movie, detailsEvent}) {
     const [showMovieActions,
         setMovieActionVisibility] = useState(false);
 
-    useCountRender(movie.id);
-
     return (
         <div>
             <div
-                onClick={detailsEvent}
+                onClick={() => detailsEvent(movie.id)}
                 className="uk-card uk-card-default"
                 style={{
                 backgroundColor: 'transparent',

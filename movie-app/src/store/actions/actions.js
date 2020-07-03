@@ -5,13 +5,15 @@ export const SORT_MOVIE = 'SORT';
 export const MOVIE_DETAILS = 'DETAILS';
 export const FETCH_MOVIE = 'FETCH_MOVIE_GET';
 export const FETCH_MOVIE_ERROR = 'FETCH_MOVIE_ERROR';
+export const EDIT_MOVIE = 'EDIT_MOVIE';
+export const DELETE_MOVIE = 'DELETE_MOVIE';
 
-
-export const initMovies = () => {
+export const fetchMovies = (queryParam = '') => {
   return dispatch => {
-      axios.get('http://localhost:4000/movies')
+      const resource = 'http://localhost:4000/movies'+ queryParam;
+      axios.get(resource)
       .then(response => {
-        dispatch(fetchMovies(response.data.data))
+        dispatch(fetchMovieAction(response.data.data))
       })
       .catch(error =>{
         dispatch(() => console.log('something went wrong while initing movies'))
@@ -19,37 +21,31 @@ export const initMovies = () => {
   }
 }
 
-export const filterMovies = (filterBy) => {
+export const movieDetails = (movieId) => {
   return dispatch => {
-    axios.get('http://localhost:4000/movies?filter='+ filterBy)
+    const resource = 'http://localhost:4000/movies/' + movieId;
+    axios.get(resource)
     .then(response => {
-       dispatch(fetchMovies(response.data.data))
-    }).catch(
-      error => {
-        dispatch(() => console.log('something wrong went while sorting movie'))
-      }
-    )
+      dispatch(fetchMovieDetails(response.data))
+    })
+    .catch(error =>{
+      dispatch(() => console.log('something went wrong while initing movies'))
+    });
   }
 }
 
-export const sortMovies = (sortBy) => {
-  return dispatch => {
-    axios.get('http://localhost:4000/movies?sortOrder=asc&sortBy=' + sortBy)
-    .then(response => {
-        dispatch(fetchMovies(response.data.data))
-    }).catch(
-      error => {
-        dispatch(() => console.log('something wrong went while sorting movie'))
-      }
-    )
-  }
-}
-
-function fetchMovies(movies){
+function fetchMovieAction(movies){
     return {
       type: FETCH_MOVIE,
       payload: movies
     }
+}
+
+function fetchMovieDetails(movie){
+  return {
+    type: MOVIE_DETAILS,
+    payload: movie
+  }
 }
   
 function fetchMovieError() {
