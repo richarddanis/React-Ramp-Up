@@ -7,6 +7,7 @@ export const FETCH_MOVIE = 'FETCH_MOVIE_GET';
 export const FETCH_MOVIE_ERROR = 'FETCH_MOVIE_ERROR';
 export const EDIT_MOVIE = 'EDIT_MOVIE';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
+export const DELETE_DETAILS = 'DELETE_MOVIE_DETAILS';
 
 export const fetchMovies = (queryParam = '') => {
   return dispatch => {
@@ -31,6 +32,13 @@ export const movieDetails = (movieId) => {
     .catch(error =>{
       dispatch(() => console.log('something went wrong while initing movies'))
     });
+  }
+}
+
+export const deleteMovieDetails = () => {
+  console.log('this shit not called')
+  return {
+    type: DELETE_DETAILS
   }
 }
 
