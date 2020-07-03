@@ -1,50 +1,27 @@
 import * as actionType from '../actions/actions';
 
 const initialState = {
-    movies:[
-        {
-            id: 'a1b1',
-            title: 'Avangers',
-            releaseYear: 2020,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam cursus molestie odi' +
-                    'o ut tincidunt. Ut elit massa, fringilla a nisi ut, lacinia ultrices arcu. Duis ' +
-                    'ultricies, mauris sed sollicitudin eleifend, ex risus auctor nisi, ut consequat ' +
-                    'tortor lacus id augue. Pellentesque vulputate ultricies lacus in hendrerit. Duis' +
-                    ' quis dictum tortor, ac lacinia arcu. Sed ac ex id urna tempor mollis. Quisque l' +
-                    'ectus sapien, condimentum eu lorem vitae, cursus convallis nulla.            ',
-            category: 'Action',
-            img: "https://static.posters.cz/image/750/ueveg-keretes-plakat-avengers-infinity-war-o" +
-                    "ne-sheet-i69678.jpg"
-        }, {
-            id: 'a1b2',
-            title: 'Avangers 3',
-            releaseYear: 20321,
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam cursus molestie odi' +
-                    'o ut tincidunt. Ut elit massa, fringilla a nisi ut, lacinia ultrices arcu. Duis ' +
-                    'ultricies, mauris sed sollicitudin eleifend, ex risus auctor nisi, ut consequat ' +
-                    'tortor lacus id augue. Pellentesque vulputate ultricies lacus in hendrerit. Duis' +
-                    ' quis dictum tortor, ac lacinia arcu. Sed ac ex id urna tempor mollis. Quisque l' +
-                    'ectus sapien, condimentum eu lorem vitae, cursus convallis nulla.            ',
-            category: 'Crime',
-            img: "https://static.posters.cz/image/750/ueveg-keretes-plakat-avengers-infinity-war-o" +
-                    "ne-sheet-i69678.jpg"
-        }
-    ]
+    movies:[]
 }
 
 const movie = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
-        case actionType.FILTER:
+        case actionType.FILTER_MOVIE:
             const updatedArray = state.movies.filter(movie => movie.id !== 'a1b2');
             return {
                 ...state,
                 movies: updatedArray
             }
-        case actionType.SORT:
+        case actionType.SORT_MOVIE:
             return {
                 ...state,
                 state
+            }
+        case actionType.FETCH_MOVIE:
+            return {
+                ...state,
+                movies: action.payload
             }
     }
     return state;

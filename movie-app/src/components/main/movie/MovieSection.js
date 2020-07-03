@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useEffect} from "react";
 import SortableMovie from "./sort/SortableMovie";
 import MovieCard from "./list/MovieCard";
 import FilterButton from "./filter/FilterButton";
 import {useSelector, useDispatch} from 'react-redux';
-import * as actionType from '../../../store/actions/actions'
+import initMovies, * as actionType from '../../../store/actions/actions'
 
-const categories = [
+const genres = [
     {
         id: 'b1',
         title: 'All'
@@ -54,14 +54,19 @@ export const MovieSection = () => {
     const dispatch = useDispatch();
 
     const sortAction = (type) => {
-        console.log(type);
-        dispatch({type: actionType.SORT})
+        'sortBy';
+        dispatch({type: actionType.SORT_MOVIE})
     }
 
     const filterAction = (id) => {
-        console.log(id);
-        dispatch({type: actionType.FILTER})
+        'filter'
+        dispatch({type: actionType.FILTER_MOVIE})
     }
+
+    useEffect(() => {
+        console.log('Called')
+        dispatch(initMovies())
+    }, [dispatch]);
 
     return (
         <div
@@ -71,7 +76,7 @@ export const MovieSection = () => {
         }}>
                 <div className="uk-child-width-expand" data-uk-grid>
                         <div className="uk-button-group">
-                            {categories.map((category) => {
+                            {genres.map((category) => {
                                 return <FilterButton key={category.id} title={category.title} filterAction= {() => filterAction(category.id)}/>
                             })}
                         </div>

@@ -64,7 +64,7 @@ function MovieCard({movie, detailsEvent}) {
                 color: '#FFFFFF'
             }}>
                 <div className="uk-card-media-top">
-                    <img src={`${movie.img}`} alt=""/>
+                    <img src={`${movie.poster_path}`} alt=""/>
                     <div className="uk-card-badge">
                         {!showMovieActions && <> <HandlerButton
                             eventName={() => setMovieActionVisibility(!showMovieActions)}
@@ -96,7 +96,7 @@ function MovieCard({movie, detailsEvent}) {
                             {movie.title}
                         </h3>
                         <span>
-                            {movie.releaseYear}
+                            {movie.release_date}
                         </span>
                     </div>
                     <p>{movie.category}</p>
