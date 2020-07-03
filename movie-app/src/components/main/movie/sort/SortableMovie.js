@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function SortableMovie({sortAction}) {
-    const [buttonName, setButtonName] = useState('ASC');
+    const [buttonName, setButtonName] = useState('...');
 
     function actionAndButtonNameChange(e){
         setButtonName(e.target.name);
@@ -17,8 +17,8 @@ export default function SortableMovie({sortAction}) {
                 </button>
                 <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
                     <ul className="uk-nav uk-dropdown-nav">
-                        <button className="uk-active" value='asc' name='ASC' onClick={(e) => actionAndButtonNameChange(e)}>ASC</button>
-                        <button className="uk-active" value='desc' name='DESC' onClick={(e) => actionAndButtonNameChange(e)}>DESC</button>
+                        <button className="uk-active" value='release_date' name='Release date' onClick={(e) => actionAndButtonNameChange(e)}>Relase date</button>
+                        <button className="uk-active" value='rating' name='Rating' onClick={(e) => actionAndButtonNameChange(e)}>Rating</button>
                     </ul>
                 </div>
             </div>

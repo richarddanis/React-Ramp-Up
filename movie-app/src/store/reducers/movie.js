@@ -8,10 +8,9 @@ const movie = (state = initialState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
         case actionType.FILTER_MOVIE:
-            const updatedArray = state.movies.filter(movie => movie.id !== 'a1b2');
             return {
                 ...state,
-                movies: updatedArray
+                state
             }
         case actionType.SORT_MOVIE:
             return {

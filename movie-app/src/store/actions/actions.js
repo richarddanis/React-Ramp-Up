@@ -7,7 +7,7 @@ export const FETCH_MOVIE = 'FETCH_MOVIE_GET';
 export const FETCH_MOVIE_ERROR = 'FETCH_MOVIE_ERROR';
 
 
-const initMovies = () => {
+export const initMovies = () => {
   return dispatch => {
       axios.get('http://localhost:4000/movies')
       .then(response => {
@@ -19,11 +19,11 @@ const initMovies = () => {
   }
 }
 
-const filterMovies = (param) => {
+export const filterMovies = (filterBy) => {
   return dispatch => {
-    axios.get('')
+    axios.get('http://localhost:4000/movies?filter='+ filterBy)
     .then(response => {
-        dispatch(fetchMovies(response.data.data))
+       dispatch(fetchMovies(response.data.data))
     }).catch(
       error => {
         dispatch(() => console.log('something wrong went while sorting movie'))
@@ -32,9 +32,9 @@ const filterMovies = (param) => {
   }
 }
 
-const sortMovies = (param) => {
+export const sortMovies = (sortBy) => {
   return dispatch => {
-    axios.get('')
+    axios.get('http://localhost:4000/movies?sortOrder=asc&sortBy=' + sortBy)
     .then(response => {
         dispatch(fetchMovies(response.data.data))
     }).catch(
@@ -50,12 +50,10 @@ function fetchMovies(movies){
       type: FETCH_MOVIE,
       payload: movies
     }
-  }
+}
   
 function fetchMovieError() {
     return {
       type: FETCH_MOVIE_ERROR
     }
 }
-
-export default initMovies;

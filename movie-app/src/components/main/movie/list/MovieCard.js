@@ -99,7 +99,7 @@ function MovieCard({movie, detailsEvent}) {
                             {movie.release_date}
                         </span>
                     </div>
-                    <p>{movie.category}</p>
+                    <p>{movie.genres.map(genre => genre).join(' & ')}</p>
                 </div>
             </div>
         </div>
