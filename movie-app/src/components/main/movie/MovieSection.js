@@ -36,14 +36,8 @@ const genres = [
 function MovieNumber({movieLength}) {
     return (
         <div>
-            <p style={{
-                color: 'white'
-            }}>
-                <span style={{
-                    fontWeight: 'bold'
-                }}>{movieLength} 
-                </span>
-                movies found
+            <p className="uk-text-muted">
+                <span className="uk-text-bold">{movieLength}</span>movies found
             </p>
         </div>
     );

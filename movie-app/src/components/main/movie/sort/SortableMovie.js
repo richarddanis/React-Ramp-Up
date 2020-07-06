@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function SortableMovie({sortAction}) {
+function SortableMovie({sortAction}) {
     const [buttonName, setButtonName] = useState('...');
 
     function actionAndButtonNameChange(e){
@@ -25,3 +25,5 @@ export default function SortableMovie({sortAction}) {
         </div>
     </div>
 }
+
+export default SortableMovie;

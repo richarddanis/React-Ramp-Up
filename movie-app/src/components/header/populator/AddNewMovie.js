@@ -10,13 +10,11 @@ export default function AddNewMovie() {
 
     return (
         <div>
-            <div>
-                <div className="uk-position-medium uk-position-right ">
+            <div className="uk-position-medium uk-position-right ">
                 <HandlerButton
-                            eventName={() => setMoveFormVisibility(!showMovieForm)}
-                            name={'+ ADD MOVIE'}
-                            movieId={null}/>
-                </div>
+                    eventName={() => setMoveFormVisibility(!showMovieForm)}
+                    name={'+ ADD MOVIE'}
+                    movieId={null}/>
             </div>
 
             {showMovieForm && <> <div className="uk-position-z-index uk-position-absolute">
@@ -30,15 +28,15 @@ export default function AddNewMovie() {
                     left: 0,
                     position: 'fixed'
                 }}>
-                        <div className="uk-position-center">
-                            <Card showCard={showMovieForm}
-                                  closeEvent={() => setMoveFormVisibility(!showMovieForm)}>
-                                       <MovieForm movieId={null} title={'ADD NEW MOVIE'}/>
-                            </Card>
-                        </div>
+                    <div className="uk-position-center">
+                        <Card
+                            showCard={showMovieForm}
+                            closeEvent={() => setMoveFormVisibility(!showMovieForm)}>
+                            <MovieForm movieId={null} title={'ADD NEW MOVIE'}/>
+                        </Card>
                     </div>
-            </div> </>
-            }
+                </div>
+            </div> </>}
         </div>
     );
 }

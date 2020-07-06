@@ -6,29 +6,26 @@ import NetflixRouletteName from "../util/NetflixRouletteName";
 import MovieDetail from "./details/MovieDetails";
 import {useSelector, shallowEqual} from 'react-redux';
 
-
 function SearchHeader(){
     return (
         <div className="uk-container-expand uk-padding uk-panel" style={{backgroundImage: `url(${ImageDB})`}}>
-        <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
-            <NetflixRouletteName/>
-            <AddNewMovie/>
-        </div>
-        <div>
+            <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
+                <NetflixRouletteName/>
+                <AddNewMovie/>
+            </div>
             <h1 className="uk-text-uppercase uk-padding uk-padding-remove-bottom" style={{color: "white"}}>FIND YOUR MOVE</h1>
+            <SearchBar/>
         </div>
-        <SearchBar/>
-    </div>
     );
 }
 
 function HeaderFacade() {
     const movieDetails = useSelector(state => state.detailsReducer.details, shallowEqual);
-        return (
-            <div>
+    
+    return (
+        <div>
             {movieDetails.id? <MovieDetail movie={movieDetails}/> : <SearchHeader />}
-            </div>
-        );
+        </div>);
 }
 
 export default HeaderFacade;
