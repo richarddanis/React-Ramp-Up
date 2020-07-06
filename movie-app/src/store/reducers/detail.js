@@ -4,7 +4,6 @@ const initialState = {details: []};
 
 const details = (state = initialState, action) => {
     // eslint-disable-next-line default-case
-    console.log('Details action: ', actionType);
     switch(action.type){
         case actionType.MOVIE_DETAILS:
             return {

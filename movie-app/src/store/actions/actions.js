@@ -36,7 +36,6 @@ export const movieDetails = (movieId) => {
 }
 
 export const deleteMovieDetails = () => {
-  console.log('this shit not called')
   return {
     type: DELETE_DETAILS
   }
