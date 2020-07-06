@@ -4,13 +4,13 @@ const HandlerButton = props => {
     return (
         <button
             onClick={(event) => {
-            props.eventName(event, props.movieId)
+            props.eventName(event)
         }}
             className="uk-button"
             style={{
             backgroundColor: 'transparent'
         }}>
-            {props.name}
+            {props.children}
         </button>
     );
 }

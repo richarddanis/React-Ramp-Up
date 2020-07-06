@@ -22,7 +22,7 @@ const form = (state = initialState, action) => {
                 movie: action.payload.movie,
                 isShowModal: true
             }
-        case actionType.CLOSE_MOVIE_MODAL: 
+        case actionType.CLOSE_FORM_MODAL: 
             return {
                 ...state,
                 isShowModal: initialState.isShowModal,

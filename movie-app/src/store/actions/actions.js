@@ -12,6 +12,7 @@ export const SHOW_MOVIE_MODAL = 'SHOW_MOVIE_MODAL';
 export const CLOSE_MOVIE_MODAL = 'CLODE_MOVIE_MODAL';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
 export const SAVE_MOVIE = 'ADD_MOVIE';
+export const CLOSE_FORM_MODAL = 'CLOSE_FORM_MODAL';
 
 export const fetchMovies = (queryParam = '') => {
   return dispatch => {
@@ -50,6 +51,18 @@ export const handleEditMovie = (movie) => {
 export const showMovieForm = (movie = {}) => {
   return dispatch => {
      dispatch(handleFormMovie(movie))
+  }
+}
+
+export const onCloseMovieForm = () => {
+  return dispatch =>{
+    dispatch(handleCloseEvent())
+  }
+}
+
+function handleCloseEvent(){
+  return {
+    type: CLOSE_FORM_MODAL
   }
 }
 

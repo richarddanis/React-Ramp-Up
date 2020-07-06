@@ -4,12 +4,22 @@ import Select from "./select";
 import {useSelector} from 'react-redux';
 import CenterCard from "../util/CenterCard";
 import Card from "../util/Card";
+import {useDispatch} from 'react-redux';
+import * as actionType from '../../store/actions/actions';
+
 function MovieForm() {
+
+    const dispatch = useDispatch();
 
     const movie = useSelector(state => state.movieForm.movie)
     const isShowForm = useSelector(state => state.movieForm.isShowModal)
+    const title = movie.id !== undefined ? 'EDIT MOVIE' : 'ADD MOVIE'
 
     const genreOptions = ["Action", "Comedy"];
+
+    function handleCloseEvent(){
+        dispatch(actionType.onCloseMovieForm());
+    }
 
     function handleSubmit(e){
         e.preventDefault();
@@ -27,7 +37,7 @@ function MovieForm() {
     return (
          <div>{isShowForm && <>
         <CenterCard>
-            <Card>
+            <Card closeEvent={handleCloseEvent}>
                 <div className="uk-width-large">
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="uk-margin">
@@ -35,9 +45,9 @@ function MovieForm() {
                                 style={{
                                 color: 'white'
                             }}
-                                className="uk-card-title">VALAMI</h3>
+                                className="uk-card-title">{title}</h3>
                             {/* Movie Id*/}
-                            {movie.id !== null && <> <Input
+                            {movie.id !== undefined  && <> <Input
                                 title={"MOVIE ID"}
                                 name={"Id"}
                                 type={"text"}

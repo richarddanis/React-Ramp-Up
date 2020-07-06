@@ -15,7 +15,7 @@ function Card(props) {
                     backgroundColor: '#232323'
                 }}>
                     <div className="uk-card-badge">
-                    <HandlerButton eventName={props.closeEvent} name={'X'}/>
+                    <HandlerButton eventName={props.closeEvent}>X</HandlerButton>
                     </div>
                     <div className="uk-margin">
                         {props.children}
