@@ -13,7 +13,7 @@ function MovieDetail({movie}){
 
     return(
         <div className="uk-container-expand uk-panel" >
-            <Card closeEvent={onDeleteMovieDetails}> {/*detailsEvent(null) */}
+            <Card closeEvent={onDeleteMovieDetails}>
                  <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
                     <NetflixRouletteName/>
                 </div>

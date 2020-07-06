@@ -33,18 +33,18 @@ const genres = [
     }
 ]
 
-function MovieNumber({movieLength}) {
+function MovieNumber({moviesAmount}) {
     return (
         <div>
             <p className="uk-text-muted">
-                <span className="uk-text-bold">{movieLength}</span>movies found
+                <span className="uk-text-bold">{moviesAmount}</span>movies found
             </p>
         </div>
     );
 }
 
 export const MovieSection = () => {
-    const movies = useSelector(state => state.movies.movies);
+    const movies = useSelector(state => state.movies);
     const dispatch = useDispatch();
 
     const sortAction = (value) => {
@@ -83,9 +83,9 @@ export const MovieSection = () => {
                 <SortableMovie sortAction={sortAction}/>
             </div>
             <hr/>
-            <MovieNumber movieLength={movies.length}/>
+            <MovieNumber moviesAmount={movies.totalAmount}/>
             <div className="uk-child-width-1-3@m" data-uk-grid>
-                {movies.map((movie) => {
+                {movies.movies.map((movie) => {
                     return <MovieCard key={movie.id} movie={movie} detailsEvent={movieDetailsAction}/>
                 })}
             </div>

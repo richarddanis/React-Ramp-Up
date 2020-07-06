@@ -15,4 +15,4 @@ const HandlerButton = props => {
     );
 }
 
-export default HandlerButton
+export default HandlerButton;

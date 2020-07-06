@@ -1,7 +1,8 @@
 import * as actionType from '../actions/actions';
 
 const initialState = {
-    movies:[]
+    movies:[],
+    totalAmount: 0
 }
 
 const movie = (state = initialState, action) => {
@@ -10,7 +11,8 @@ const movie = (state = initialState, action) => {
         case actionType.FETCH_MOVIE:
             return {
                 ...state,
-                movies: action.payload
+                movies: action.payload.data,
+                totalAmount: action.payload.totalAmount
             }
     }
     return state;

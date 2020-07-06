@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from "../components/footer/Footer";
 import HeaderFacade from "../components/header/HeaderFacade";
 import {MovieSection} from "../components/main/movie/MovieSection";
+import MovieForm from "../components/form/MovieForm";
 
 class App extends React.Component {
 
@@ -9,6 +10,7 @@ class App extends React.Component {
         return (
                 <div className="uk-container-expand">
                     <HeaderFacade/>
+                    <MovieForm/>
                     <MovieSection/>
                     <Footer/>
                 </div>

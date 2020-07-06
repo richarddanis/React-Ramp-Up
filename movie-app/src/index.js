@@ -9,12 +9,14 @@ import '../node_modules/uikit/dist/js/uikit-icons.min.js';
 import thunk from 'redux-thunk';
 import detailsReducer from './store/reducers/detail';
 import movieReducer from './store/reducers/movie';
+import movieFormReducer from './store/reducers/formmodal';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 
 const rootReducer = combineReducers({
      detailsReducer, 
-     movies: movieReducer
+     movies: movieReducer,
+     movieForm: movieFormReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
@@ -22,9 +24,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const logger = store => {
      return next => {
          return action => {
-             console.log('[Middleware] Dispatching', action);
+             console.log('Middleware => dispatching', action);
              const result = next(action);
-             console.log('[Middleware] next state', store.getState());
+             console.log('Middleware => next state', store.getState());
              return result;
          }
      }

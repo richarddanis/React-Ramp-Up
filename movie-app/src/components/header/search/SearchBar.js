@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Searchbar() {
+function Searchbar() {
     return (
         <div
             className="uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top uk-padding-large uk-padding-remove-top"
@@ -18,3 +18,5 @@ export default function Searchbar() {
         </div>
     );
 }
+
+export default Searchbar;

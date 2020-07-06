@@ -3,20 +3,28 @@ import "../../../style/move-form.css";
 import MovieForm from "../../form/MovieForm";
 import Card from "../../util/Card";
 import HandlerButton from "../../util/HandlerButton";
+import {useDispatch} from 'react-redux';
+import * as actionType from '../../../store/actions/actions';
 
 export default function AddNewMovie() {
     const [showMovieForm,
         setMoveFormVisibility] = useState(false);
 
+    const dispatch = useDispatch();
+
+    const showEditableMovieForm = () =>{
+            dispatch(actionType.showMovieForm());
+        }
+
     return (
         <div>
             <div className="uk-position-medium uk-position-right ">
+                <button onClick={() => showEditableMovieForm()}>add new movie</button>
                 <HandlerButton
                     eventName={() => setMoveFormVisibility(!showMovieForm)}
                     name={'+ ADD MOVIE'}
                     movieId={null}/>
             </div>
-
             {showMovieForm && <> <div className="uk-position-z-index uk-position-absolute">
                 <div
                     style={{
