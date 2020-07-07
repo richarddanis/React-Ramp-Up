@@ -46,8 +46,27 @@ export const handleSaveEditFormMovie = (movie) => {
       movie.id = Math.random() * 100;
       dispatch(saveMovieAction(movie));
     } else {
+      console.log(movie);
       dispatch(editMovieAction(movie));
     }
+    {/*
+    const resource = 'http://localhost:4000/movies';
+    axios.put(resource, movie)
+    .then(response => {
+      dispatch(fetchMovieDetails(response.data))
+    })
+    .catch(error =>{
+      dispatch(() => console.log(error))
+    });
+  } else {
+    const resource = 'http://localhost:4000/movies';
+    axios.post(resource, movie)
+    .then(response => {
+      dispatch(fetchMovieDetails(response.data))
+    })
+    .catch(error =>{
+      dispatch(() => console.log(error))
+    });*/}
   }
 }
 
@@ -65,14 +84,14 @@ export const handleCloseMovieForm = () => {
 
 export const handleDeleteMovie =(movieId) => {
   return dispatch => {
-    dispatch(deleteEventAction(movieId));
-  }
-}
-
-function deleteEventAction(movieId){
-  return {
-    type: DELETE_MOVIE,
-    payload: movieId
+    const resource = 'http://localhost:4000/movies/' + movieId;
+    axios.delete(resource)
+    .then(response => {
+        dispatch(fetchMovies())
+    })
+    .catch(error =>{
+      dispatch(() => console.log('something went wrong while initing movies'))
+    });
   }
 }
 

@@ -24,11 +24,6 @@ const movie = (state = initialState, action) => {
                 movies: action.payload.data,
                 totalAmount: action.payload.totalAmount
             }
-        case actionType.DELETE_MOVIE:
-            return {
-                ...state,
-                movies: state.movies.filter(movie => movie.id !== action.payload)
-            }
         case actionType.SHOW_MOVIE_MODAL: 
             return {
                 ...state,
@@ -45,16 +40,6 @@ const movie = (state = initialState, action) => {
             return {
                 ...state,
                 movies: [...state.movies, action.payload],
-                isShowModal: initialState.isShowModal,
-                movie: initialState.movie
-            }
-        case actionType.EDIT_MOVIE:
-            const movieArray = [...state.movies];
-            const index = movieArray.findIndex(movie => movie.id == action.payload.id)
-            movieArray[index] = action.payload;
-            return {
-                ...state,
-                movies: movieArray,
                 isShowModal: initialState.isShowModal,
                 movie: initialState.movie
             }
