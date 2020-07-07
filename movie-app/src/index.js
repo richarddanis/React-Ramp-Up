@@ -9,15 +9,13 @@ import '../node_modules/uikit/dist/js/uikit-icons.min.js';
 import thunk from 'redux-thunk';
 import detailsReducer from './store/reducers/detail';
 import movieReducer from './store/reducers/movie';
-import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 
 const rootReducer = combineReducers({
      detailsReducer, 
      movies: movieReducer
 })
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const logger = store => {
      return next => {
@@ -30,7 +28,7 @@ const logger = store => {
      }
  };
 
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk, logger)));
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
 

@@ -8,8 +8,8 @@ import * as actionType from '../../../../store/actions/actions';
 function DeleteMovieSection({movieId, isShow, closeEvent}) {
     const dispatch = useDispatch();
 
-    const deleteMovie = (movieId) => {
-        dispatch(actionType.onDeleteMovie(movieId));
+    const onDeleteMovie = (movieId) => {
+        dispatch(actionType.handleDeleteMovie(movieId));
     }
 
     return (
@@ -19,7 +19,7 @@ function DeleteMovieSection({movieId, isShow, closeEvent}) {
                     <div>
                         <h1 className="color-white">Delete movie</h1>
                         <p>Are you sure want to delete the movie?</p>
-                        <HandlerButton eventName={() => deleteMovie(movieId)}>Confirm</HandlerButton>
+                        <HandlerButton eventName={() => onDeleteMovie(movieId)}>Confirm</HandlerButton>
                     </div>
                 </Card>
             </CenterCard> </>

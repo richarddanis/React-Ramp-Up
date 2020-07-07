@@ -18,7 +18,7 @@ function MovieForm() {
     const genreOptions = ["Action", "Comedy"];
 
     function handleCloseEvent(){
-        dispatch(actionType.onCloseMovieForm());
+        dispatch(actionType.handleCloseMovieForm());
     }
 
     function handleSubmit(e){
@@ -32,7 +32,7 @@ function MovieForm() {
                 overview: e.target.overview.value,
                 runtime: e.target.runtime.value
         }
-        dispatch(actionType.handleFormMovie(movie));
+        dispatch(actionType.handleSaveEditFormMovie(movie));
     }
 
     return (

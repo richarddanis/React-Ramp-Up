@@ -4,7 +4,6 @@ export const FILTER_MOVIE = 'FILTER';
 export const SORT_MOVIE = 'SORT';
 export const MOVIE_DETAILS = 'DETAILS';
 export const FETCH_MOVIE = 'FETCH_MOVIE_GET';
-export const FETCH_MOVIE_ERROR = 'FETCH_MOVIE_ERROR';
 export const DELETE_DETAILS = 'DELETE_MOVIE_DETAILS';
 
 // FORM MODAL
@@ -28,7 +27,7 @@ export const fetchMovies = (queryParam = '') => {
   }
 }
 
-export const movieDetails = (movieId) => {
+export const handleMovieDetailsLoad = (movieId) => {
   return dispatch => {
     const resource = 'http://localhost:4000/movies/' + movieId;
     axios.get(resource)
@@ -41,70 +40,70 @@ export const movieDetails = (movieId) => {
   }
 }
 
-export const handleFormMovie = (movie) => {
+export const handleSaveEditFormMovie = (movie) => {
   return dispatch => {
     if(movie.id === undefined){ 
       movie.id = Math.random() * 100;
-      dispatch(onSaveMovie(movie));
+      dispatch(saveMovieAction(movie));
     } else {
-      dispatch(onEditMovie(movie));
+      dispatch(editMovieAction(movie));
     }
   }
 }
 
-export const showMovieForm = (movie = {}) => {
+export const handleShowMovieForm = (movie = {}) => {
   return dispatch => {
-     dispatch(handleShowFormMovie(movie))
+     dispatch(openMovieDetailsAction(movie))
   }
 }
 
-export const onCloseMovieForm = () => {
+export const handleCloseMovieForm = () => {
   return dispatch =>{
-    dispatch(handleCloseEvent())
+    dispatch(closeFormAction())
   }
 }
 
-export const onDeleteMovie =(movieId) => {
+export const handleDeleteMovie =(movieId) => {
   return dispatch => {
-    dispatch(handleDeleteEvent(movieId));
+    dispatch(deleteEventAction(movieId));
   }
 }
 
-function handleDeleteEvent(movieId){
+function deleteEventAction(movieId){
   return {
     type: DELETE_MOVIE,
     payload: movieId
   }
 }
 
-function handleCloseEvent(){
+function closeFormAction(){
   return {
     type: CLOSE_FORM_MODAL
   }
 }
 
-function onSaveMovie(movie) {
+function saveMovieAction(movie) {
   return {
     type: SAVE_MOVIE,
     payload: movie
   }
 }
 
-function onEditMovie(movie){
+function editMovieAction(movie){
   return {
     type: EDIT_MOVIE,
     payload: movie
   }
 }
 
-function handleShowFormMovie(movie) {
+function openMovieDetailsAction(movie) {
     return{
       type: SHOW_MOVIE_MODAL,
       payload: {movie}
     }
 }
 
-export const onCloseMovieDetails = () => {
+export const closeMovieDetailsAction = () => {
   return {
     type: DELETE_DETAILS
   }

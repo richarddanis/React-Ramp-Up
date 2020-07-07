@@ -25,12 +25,11 @@ const movie = (state = initialState, action) => {
                 totalAmount: action.payload.totalAmount
             }
         case actionType.DELETE_MOVIE:
-            console.log(action.payload)
             return {
                 ...state,
                 movies: state.movies.filter(movie => movie.id !== action.payload)
             }
-            case actionType.SHOW_MOVIE_MODAL: 
+        case actionType.SHOW_MOVIE_MODAL: 
             return {
                 ...state,
                 movie: action.payload.movie,

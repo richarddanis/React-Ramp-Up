@@ -8,7 +8,7 @@ function MovieDetail({movie}){
     const dispatch = useDispatch();
 
     function handleCloseMovieDetails(){
-        dispatch(actionType.onCloseMovieDetails());
+        dispatch(actionType.handleCloseMovieForm());
     }
 
     return(

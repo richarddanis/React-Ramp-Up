@@ -19,7 +19,7 @@ export const MovieSection = () => {
     const movies = useSelector(state => state.movies);
 
     const movieDetailsAction = (movieId) =>{
-        dispatch(actionType.movieDetails(movieId));
+        dispatch(actionType.handleMovieDetailsLoad(movieId));
     }
 
     useEffect(() => {

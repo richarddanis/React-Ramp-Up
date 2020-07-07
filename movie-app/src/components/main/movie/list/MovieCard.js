@@ -11,7 +11,7 @@ function CardActions({movie}) {
     const dispatch = useDispatch();
 
     const onShowEditMovieFormModal = (movie) => {
-        dispatch(actionType.showMovieForm(movie));
+        dispatch(actionType.handleShowMovieForm(movie));
     }
 
     return (

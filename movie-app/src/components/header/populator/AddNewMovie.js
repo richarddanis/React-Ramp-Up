@@ -7,7 +7,7 @@ export default function AddNewMovie() {
     const dispatch = useDispatch();
 
     const showEditableMovieForm = () => {
-        dispatch(actionType.showMovieForm());
+        dispatch(actionType.handleShowMovieForm());
     }
 
     return (
