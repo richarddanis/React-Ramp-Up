@@ -64,9 +64,9 @@ export const handleSaveEditFormMovie = (movie) => {
   }
 }
 
-export const handleShowMovieForm = (movie = {}) => {
+export const handleShowMovieForm = (movie = {}, isEditableMovie = false) => {
   return dispatch => {
-     dispatch(openMovieDetailsAction(movie))
+     dispatch(openMovieFormAction(movie, isEditableMovie))
   }
 }
 
@@ -95,24 +95,10 @@ function closeFormAction(){
   }
 }
 
-function saveMovieAction(movie) {
-  return {
-    type: SAVE_MOVIE,
-    payload: movie
-  }
-}
-
-function editMovieAction(movie){
-  return {
-    type: EDIT_MOVIE,
-    payload: movie
-  }
-}
-
-function openMovieDetailsAction(movie) {
+function openMovieFormAction(movie, isEditableMovie) {
     return{
       type: SHOW_MOVIE_MODAL,
-      payload: {movie}
+      payload: {movie, isEditableMovie}
     }
 }
 

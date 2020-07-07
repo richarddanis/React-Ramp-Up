@@ -4,6 +4,7 @@ const initialState = {
     movies:[],
     totalAmount: 0,
     isShowModal: false,
+    isEditableMovie: false,
     movie: {
         id: undefined,
         title: '',
@@ -28,19 +29,14 @@ const movie = (state = initialState, action) => {
         case actionType.SHOW_MOVIE_MODAL: 
             return {
                 ...state,
+                isEditableMovie: action.payload.isEditableMovie,
                 movie: action.payload.movie,
                 isShowModal: true
             }
         case actionType.CLOSE_FORM_MODAL: 
             return {
                 ...state,
-                isShowModal: initialState.isShowModal,
-                movie: initialState.movie
-            }
-        case actionType.SAVE_MOVIE:
-            return {
-                ...state,
-                movies: [...state.movies, action.payload],
+                isEditableMovie: false,
                 isShowModal: initialState.isShowModal,
                 movie: initialState.movie
             }

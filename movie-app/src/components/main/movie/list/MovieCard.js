@@ -11,7 +11,8 @@ function CardActions({movie}) {
     const dispatch = useDispatch();
 
     const onShowEditMovieFormModal = (movie) => {
-        dispatch(actionType.handleShowMovieForm(movie));
+        const isEditableMovie = true;
+        dispatch(actionType.handleShowMovieForm(movie, isEditableMovie));
     }
 
     return (

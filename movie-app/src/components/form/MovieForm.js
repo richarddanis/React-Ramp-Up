@@ -13,9 +13,11 @@ function MovieForm() {
 
     const movie = useSelector(state => state.movies.movie)
     const isShowForm = useSelector(state => state.movies.isShowModal)
-    const title = movie.id !== undefined ? 'EDIT MOVIE' : 'ADD MOVIE'
+    const isEditableMovie = useSelector(state => state.movies.isEditableMovie)
+    
+    const title = isEditableMovie ? 'EDIT MOVIE' : 'ADD MOVIE';
 
-    const genreOptions = ["Action", "Comedy"];
+    const genreOptions = ["Action", "Comedy", "Etc"];
 
     function handleCloseEvent(){
         dispatch(actionType.handleCloseMovieForm());
@@ -24,7 +26,7 @@ function MovieForm() {
     function handleSubmit(e){
         e.preventDefault();
         const movie = {
-                id: e.target.id.value === undefined ? undefined : parseInt(e.target.id.value),
+                id: isEditableMovie ? parseInt(e.target.id.value)  : undefined,
                 title: e.target.title.value,
                 release_date: e.target.release.value,
                 poster_path: e.target.movieurl.value,
