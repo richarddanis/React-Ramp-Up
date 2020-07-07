@@ -24,13 +24,13 @@ function MovieForm() {
     function handleSubmit(e){
         e.preventDefault();
         const movie = {
-                id: e.target.id.value,
+                id: e.target.id.value === undefined ? undefined : parseInt(e.target.id.value),
                 title: e.target.title.value,
                 release_date: e.target.release.value,
                 poster_path: e.target.movieurl.value,
                 genres: [e.target.select.value],
                 overview: e.target.overview.value,
-                runtime: e.target.runtime.value
+                runtime: parseInt(e.target.runtime.value)
         }
         dispatch(actionType.handleSaveEditFormMovie(movie));
     }

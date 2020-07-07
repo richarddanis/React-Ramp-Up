@@ -21,6 +21,7 @@ const movie = (state = initialState, action) => {
         case actionType.FETCH_MOVIE:
             return {
                 ...state,
+                isShowModal: false,
                 movies: action.payload.data,
                 totalAmount: action.payload.totalAmount
             }

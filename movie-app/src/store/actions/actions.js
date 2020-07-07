@@ -42,31 +42,25 @@ export const handleMovieDetailsLoad = (movieId) => {
 
 export const handleSaveEditFormMovie = (movie) => {
   return dispatch => {
-    if(movie.id === undefined){ 
-      movie.id = Math.random() * 100;
-      dispatch(saveMovieAction(movie));
+    if(movie.id === undefined){
+      const resource = 'http://localhost:4000/movies';
+      axios.post(resource, movie)
+      .then(response => {
+        dispatch(fetchMovies())
+      })
+      .catch(error =>{
+        dispatch(() => console.log(error))
+      });
     } else {
-      console.log(movie);
-      dispatch(editMovieAction(movie));
+      const resource = 'http://localhost:4000/movies';
+      axios.put(resource, movie)
+      .then(response => {
+        dispatch(fetchMovies())
+      })
+      .catch(error =>{
+        dispatch(() => console.log(error))
+      });
     }
-    {/*
-    const resource = 'http://localhost:4000/movies';
-    axios.put(resource, movie)
-    .then(response => {
-      dispatch(fetchMovieDetails(response.data))
-    })
-    .catch(error =>{
-      dispatch(() => console.log(error))
-    });
-  } else {
-    const resource = 'http://localhost:4000/movies';
-    axios.post(resource, movie)
-    .then(response => {
-      dispatch(fetchMovieDetails(response.data))
-    })
-    .catch(error =>{
-      dispatch(() => console.log(error))
-    });*/}
   }
 }
 
