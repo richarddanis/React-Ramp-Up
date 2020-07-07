@@ -40,11 +40,11 @@ export const handleMovieDetailsLoad = (movieId) => {
   }
 }
 
-export const handleSaveEditFormMovie = (movie) => {
+export const handleSaveEditFormMovie = (movie, isEditableMovie) => {
   return dispatch => {
-    if(movie.id === undefined){
+    if(isEditableMovie){
       const resource = 'http://localhost:4000/movies';
-      axios.post(resource, movie)
+      axios.put(resource, movie)
       .then(response => {
         dispatch(fetchMovies())
       })
@@ -53,7 +53,7 @@ export const handleSaveEditFormMovie = (movie) => {
       });
     } else {
       const resource = 'http://localhost:4000/movies';
-      axios.put(resource, movie)
+      axios.post(resource, movie)
       .then(response => {
         dispatch(fetchMovies())
       })
@@ -67,6 +67,12 @@ export const handleSaveEditFormMovie = (movie) => {
 export const handleShowMovieForm = (movie = {}, isEditableMovie = false) => {
   return dispatch => {
      dispatch(openMovieFormAction(movie, isEditableMovie))
+  }
+}
+
+export const handleCloseDetailsSection = () => {
+  return dispatch => {
+    dispatch(closeMovieDetailsAction())
   }
 }
 
@@ -102,7 +108,7 @@ function openMovieFormAction(movie, isEditableMovie) {
     }
 }
 
-export const closeMovieDetailsAction = () => {
+function closeMovieDetailsAction() {
   return {
     type: DELETE_DETAILS
   }

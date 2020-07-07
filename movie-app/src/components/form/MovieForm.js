@@ -34,7 +34,7 @@ function MovieForm() {
                 overview: e.target.overview.value,
                 runtime: parseInt(e.target.runtime.value)
         }
-        dispatch(actionType.handleSaveEditFormMovie(movie));
+        dispatch(actionType.handleSaveEditFormMovie(movie, isEditableMovie));
     }
 
     return (

@@ -36,7 +36,6 @@ const movie = (state = initialState, action) => {
         case actionType.CLOSE_FORM_MODAL: 
             return {
                 ...state,
-                isEditableMovie: false,
                 isShowModal: initialState.isShowModal,
                 movie: initialState.movie
             }
