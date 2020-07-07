@@ -15,8 +15,8 @@ function MovieNumber({moviesAmount}) {
 }
 
 export const MovieSection = () => {
-    const movies = useSelector(state => state.movies);
     const dispatch = useDispatch();
+    const movies = useSelector(state => state.movies);
 
     const movieDetailsAction = (movieId) =>{
         dispatch(actionType.movieDetails(movieId));
@@ -26,7 +26,6 @@ export const MovieSection = () => {
         dispatch(actionType.fetchMovies())
     }, [dispatch]);
 
-    console.log(movies);
     return (
         <div className="uk-container-expand uk-padding uk-panel background-color-grey">
             <SortAndFilterSection/>

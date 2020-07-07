@@ -39,24 +39,22 @@ function MovieCard({movie, detailsEvent}) {
                             ...
                             </HandlerButton> 
                         </>}
-                        {showMovieActions && <> 
-                        <Card showCard={showMovieActions} closeEvent={() => setMovieActionVisibility(!showMovieActions)}>
-                            <CardActions movie={movie}/>
-                        </Card> </>}
+                        {showMovieActions && 
+                        <> 
+                            <Card showCard={showMovieActions} closeEvent={() => setMovieActionVisibility(!showMovieActions)}>
+                                <CardActions movie={movie}/>
+                            </Card> 
+                        </>}
                     </div>
                 </div>
                 <div className="uk-card-body" onClick={() => detailsEvent(movie.id)}>
                     <div className="uk-child-width-expand" data-uk-grid>
-                        <h3
-                            className="uk-card-title"
-                            style={{
-                            color: '#FFFFFF'
-                        }}>
-                            {movie.title}
+                        <h3 className="uk-card-title">
+                            <span className="color-white">{movie.title}</span>
                         </h3>
-                        <span>
-                            {movie.release_date}
-                        </span>
+                            <button className="uk-disabled uk-button uk-button-default uk-button-small uk-border-rounded uk-margin-remove uk-padding-remove" >
+                                <span className="color-white uk-margin-remove uk-padding-remove">{movie.release_date}</span>
+                            </button>
                     </div>
                     <p>{movie
                             .genres

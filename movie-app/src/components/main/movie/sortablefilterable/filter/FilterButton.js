@@ -4,11 +4,8 @@ function FilterButton({title, filterAction}) {
     return (
         <div>
             <button
-                className="uk-button"
-                onClick={filterAction}
-                style={{
-                backgroundColor: "transparent"
-            }}>
+                className="uk-button background-transparent"
+                onClick={filterAction}>
                 <span className="color-white">{title}</span>
             </button>
         </div>

@@ -47,13 +47,13 @@ const SortAndFilterSection = () => {
 
     return(
         <div className="uk-child-width-expand" data-uk-grid>
-                <div className="uk-button-group">
-                    {genres.map((category) => {
-                        return <FilterButton
-                            key={category.id}
-                            title={category.title}
-                            filterAction={() => filterAction(category.value)}/>})}
-                </div>
+            <div className="uk-button-group">
+                {genres.map((category) => {
+                    return <FilterButton
+                        key={category.id}
+                        title={category.title}
+                        filterAction={() => filterAction(category.value)}/>})}
+            </div>
         <SortableMovie sortAction={sortAction}/>
         </div>
     )

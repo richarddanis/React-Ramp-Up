@@ -32,8 +32,6 @@ function MovieForm() {
                 overview: e.target.overview.value,
                 runtime: e.target.runtime.value
         }
-
-        console.log(movie);
         dispatch(actionType.handleFormMovie(movie));
     }
 
@@ -41,7 +39,7 @@ function MovieForm() {
          <div>{isShowForm && <>
         <CenterCard>
             <Card closeEvent={handleCloseEvent}>
-                <div className="uk-width-large">
+                <div className="uk-width-large ">
                     <form onSubmit={(e) => handleSubmit(e)}>
                         <div className="uk-margin">
                             <h3
@@ -55,7 +53,7 @@ function MovieForm() {
                                 name={"id"}
                                 type={"text"}
                                 defaultValue={movie.id} 
-                                data-disabled/> </>}
+                                disabled/> </>}
                         {/* Movie Title*/}
                             <Input
                                 name={"title"}
@@ -67,6 +65,9 @@ function MovieForm() {
                             <Input
                                 name={"release"}
                                 type={"number"}
+                                min="1900" 
+                                max="2099" 
+                                step="1" 
                                 defaultValue={movie.release_date}
                                 placeholder={'Release year here'}
                                 title={'RELEASE DATE'}/>
@@ -115,7 +116,7 @@ function MovieForm() {
                                     <button
                                         type="submit"
                                         value="Submit"
-                                        className="uk-button uk-border-rounded">
+                                        className="uk-button uk-border-rounded color-salmon">
                                         Submit
                                     </button>
                                 </div>
