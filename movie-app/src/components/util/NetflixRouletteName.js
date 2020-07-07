@@ -1,10 +1,12 @@
 import React from "react";
 
-export default function NetflixRouletteName() {
+function NetflixRouletteName() {
     return (
-        <div style={{color: '#F65261'}}>
+        <div className="color-salmon">
             <span className="uk-text-left" style={{fontWeight: 'bold'}}>netflix</span>
             <span>roulette</span>
         </div>
     )
 }
+
+export default NetflixRouletteName;

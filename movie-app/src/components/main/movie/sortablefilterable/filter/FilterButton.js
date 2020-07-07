@@ -9,10 +9,7 @@ function FilterButton({title, filterAction}) {
                 style={{
                 backgroundColor: "transparent"
             }}>
-                <span style={{
-                    color: "white"
-                }}>{title}
-                </span>
+                <span className="color-white">{title}</span>
             </button>
         </div>
     );

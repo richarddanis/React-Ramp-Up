@@ -3,11 +3,13 @@ import React from "react";
 const Input = props => {
     return (
         <div className="uk-margin">
-            <label className="uk-form-label" htmlFor="form-stacked-text">
-                <span>{props.title}</span>
-            </label>
+            <div className="uk-margin-small">
+                <label className="uk-form-label" htmlFor="form-stacked-text">
+                    <span>{props.title}</span>
+                </label>
+            </div>
             <div className="uk-form-controls">
-                <input className="uk-input"
+                <input className="uk-input uk-border-rounded"
                     id={props.name}
                     name={props.name}
                     type={props.inputType}

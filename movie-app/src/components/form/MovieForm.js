@@ -28,10 +28,12 @@ function MovieForm() {
                 title: e.target.title.value,
                 release_date: e.target.release.value,
                 poster_path: e.target.movieurl.value,
-                genres: [],
+                genres: [e.target.select.value],
                 overview: e.target.overview.value,
                 runtime: e.target.runtime.value
         }
+
+        console.log(movie);
         dispatch(actionType.handleFormMovie(movie));
     }
 
@@ -65,34 +67,34 @@ function MovieForm() {
                             <Input
                                 name={"release"}
                                 type={"number"}
-                                value={movie.release_date}
+                                defaultValue={movie.release_date}
                                 placeholder={'Release year here'}
                                 title={'RELEASE DATE'}/>
                         {/* Movie year */}
                             <Input
                                 name={"movieurl"}
                                 type={"text"}
-                                value={movie.poster_path}
+                                defaultValue={movie.poster_path}
                                 placeholder={'Movie URL here...'}
                                 title={'MOVIE URL'}/> 
                         {/* Genre option */}
                             <Select
                                 options={genreOptions}
                                 placeholder={"Select genre..."}
-                                title={"Genre"}
+                                title={"GENRE"}
                                 name={"genre"}/> 
                         {/* Overview */}
                             <Input
                                 name={"overview"}
                                 type={"text"}
-                                value={movie.overview}
+                                defaultValue={movie.overview}
                                 placeholder={'Overview here'}
                                 title={'OVERVIEW'}/>
                         {/*Runtime */}
                             <Input
                                 name={"runtime"}
                                 type={"number"}
-                                value={movie.runtime}
+                                defaultValue={movie.runtime}
                                 placeholder={'Runtime here...'}
                                 title={'RUNTIME'}/>
                         
@@ -105,9 +107,7 @@ function MovieForm() {
                                         borderColor: '#F65261',
                                         color: '#F65261'
                                     }}
-                                        onClick={(event) => {
-                                        console.log('clicked')
-                                    }}>
+                                    type="reset">
                                         Reset
                                     </button>
                                 </div>
