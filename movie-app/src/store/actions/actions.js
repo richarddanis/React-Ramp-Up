@@ -60,6 +60,19 @@ export const onCloseMovieForm = () => {
   }
 }
 
+export const onDeleteMovie =(movieId) => {
+  return dispatch => {
+    dispatch(handleDeleteEvent(movieId));
+  }
+}
+
+function handleDeleteEvent(movieId){
+  return {
+    type: DELETE_MOVIE,
+    payload: movieId
+  }
+}
+
 function handleCloseEvent(){
   return {
     type: CLOSE_FORM_MODAL
@@ -80,7 +93,7 @@ function handleFormMovie(movie) {
     }
 }
 
-export const deleteMovieDetails = () => {
+export const onCloseMovieDetails = () => {
   return {
     type: DELETE_DETAILS
   }

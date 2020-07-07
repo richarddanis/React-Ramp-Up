@@ -7,13 +7,13 @@ import * as actionType from '../../../store/actions/actions'
 function MovieDetail({movie}){
     const dispatch = useDispatch();
 
-    function onDeleteMovieDetails(){
-        dispatch(actionType.deleteMovieDetails());
+    function handleCloseMovieDetails(){
+        dispatch(actionType.onCloseMovieDetails());
     }
 
     return(
         <div className="uk-container-expand uk-panel" >
-            <Card closeEvent={onDeleteMovieDetails}>
+            <Card closeEvent={handleCloseMovieDetails}>
                  <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
                     <NetflixRouletteName/>
                 </div>

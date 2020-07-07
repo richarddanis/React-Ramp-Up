@@ -8,7 +8,6 @@ import {useDispatch} from 'react-redux';
 import * as actionType from '../../store/actions/actions';
 
 function MovieForm() {
-
     const dispatch = useDispatch();
 
     const movie = useSelector(state => state.movieForm.movie)

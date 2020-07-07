@@ -14,6 +14,12 @@ const movie = (state = initialState, action) => {
                 movies: action.payload.data,
                 totalAmount: action.payload.totalAmount
             }
+        case actionType.DELETE_MOVIE:
+            console.log(action.payload)
+            return {
+                ...state,
+                movies: state.movies.filter(movie => movie.id !== action.payload)
+            }
     }
     return state;
 }
