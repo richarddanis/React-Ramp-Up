@@ -29,12 +29,7 @@ function MovieCard({movie, detailsEvent}) {
 
     return (
         <div>
-            <div
-                className="uk-card uk-card-default"
-                style={{
-                backgroundColor: 'transparent',
-                color: '#FFFFFF'
-            }}>
+            <div className="uk-card uk-card-default background-transparent color-white" style={{backgroundColor: 'transparent', color: '#FFFFFF'}}>
                 <div className="uk-card-media-top">
                     <img src={`${movie.poster_path}`} alt=""/>
                     <div className="uk-card-badge">

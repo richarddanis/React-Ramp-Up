@@ -11,8 +11,9 @@ export const DELETE_DETAILS = 'DELETE_MOVIE_DETAILS';
 export const SHOW_MOVIE_MODAL = 'SHOW_MOVIE_MODAL';
 export const CLOSE_MOVIE_MODAL = 'CLODE_MOVIE_MODAL';
 export const DELETE_MOVIE = 'DELETE_MOVIE';
-export const SAVE_MOVIE = 'ADD_MOVIE';
+export const SAVE_MOVIE = 'SAVE_MOVIE';
 export const CLOSE_FORM_MODAL = 'CLOSE_FORM_MODAL';
+export const EDIT_MOVIE = 'EDIT_MOVIE';
 
 export const fetchMovies = (queryParam = '') => {
   return dispatch => {
@@ -40,17 +41,20 @@ export const movieDetails = (movieId) => {
   }
 }
 
-export const handleEditMovie = (movie) => {
+export const handleFormMovie = (movie) => {
   return dispatch => {
-    console.log('Add new movie: ', movie)
-    if(movie.id === null){ movie.id = Math.random();}
-    dispatch(onSaveEditMovie(movie));
+    if(movie.id === undefined){ 
+      movie.id = Math.random() * 100;
+      dispatch(onSaveMovie(movie));
+    } else {
+      dispatch(onEditMovie(movie));
+    }
   }
 }
 
 export const showMovieForm = (movie = {}) => {
   return dispatch => {
-     dispatch(handleFormMovie(movie))
+     dispatch(handleShowFormMovie(movie))
   }
 }
 
@@ -79,14 +83,21 @@ function handleCloseEvent(){
   }
 }
 
-function onSaveEditMovie(movie) {
+function onSaveMovie(movie) {
   return {
     type: SAVE_MOVIE,
     payload: movie
   }
 }
 
-function handleFormMovie(movie) {
+function onEditMovie(movie){
+  return {
+    type: EDIT_MOVIE,
+    payload: movie
+  }
+}
+
+function handleShowFormMovie(movie) {
     return{
       type: SHOW_MOVIE_MODAL,
       payload: {movie}

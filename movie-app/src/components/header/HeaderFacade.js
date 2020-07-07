@@ -13,7 +13,7 @@ function SearchHeader(){
                 <NetflixRouletteName/>
                 <AddNewMovie/>
             </div>
-            <h1 className="uk-text-uppercase uk-padding uk-padding-remove-bottom" style={{color: "white"}}>FIND YOUR MOVE</h1>
+            <h1 className="uk-text-uppercase uk-padding uk-padding-remove-bottom color-white">FIND YOUR MOVE</h1>
             <SearchBar/>
         </div>
     );

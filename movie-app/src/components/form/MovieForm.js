@@ -11,8 +11,8 @@ function MovieForm() {
 
     const dispatch = useDispatch();
 
-    const movie = useSelector(state => state.movieForm.movie)
-    const isShowForm = useSelector(state => state.movieForm.isShowModal)
+    const movie = useSelector(state => state.movies.movie)
+    const isShowForm = useSelector(state => state.movies.isShowModal)
     const title = movie.id !== undefined ? 'EDIT MOVIE' : 'ADD MOVIE'
 
     const genreOptions = ["Action", "Comedy"];
@@ -24,6 +24,7 @@ function MovieForm() {
     function handleSubmit(e){
         e.preventDefault();
         const movie = {
+                id: e.target.id.value,
                 title: e.target.title.value,
                 release_date: e.target.release.value,
                 poster_path: e.target.movieurl.value,
@@ -31,7 +32,7 @@ function MovieForm() {
                 overview: e.target.overview.value,
                 runtime: e.target.runtime.value
         }
-        console.log('Movie: ', movie);
+        dispatch(actionType.handleFormMovie(movie));
     }
 
     return (
@@ -49,14 +50,15 @@ function MovieForm() {
                         {/* Movie Id*/}
                             {movie.id !== undefined  && <> <Input
                                 title={"MOVIE ID"}
-                                name={"Id"}
+                                name={"id"}
                                 type={"text"}
-                                value={movie.id}/> </>}
+                                defaultValue={movie.id} 
+                                data-disabled/> </>}
                         {/* Movie Title*/}
                             <Input
                                 name={"title"}
                                 type={"text"}
-                                value={movie.title}
+                                defaultValue={movie.title}
                                 placeholder={'Title here'}
                                 title={'TITLE'}/> 
                         {/* Release year */}

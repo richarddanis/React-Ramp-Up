@@ -7,12 +7,12 @@ const Input = props => {
                 <span>{props.title}</span>
             </label>
             <div className="uk-form-controls">
-                <input
-                    className="uk-input"
+                <input className="uk-input"
                     id={props.name}
                     name={props.name}
                     type={props.inputType}
-                    onChange={props.handleChange}
+                    defaultValue={props.defaultValue}
+                    onChange={(e) => e.target.value}
                     placeholder={props.placeholder}
                     {...props}/>
             </div>

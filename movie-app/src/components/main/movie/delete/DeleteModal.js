@@ -22,7 +22,8 @@ function DeleteMovieSection({movieId, isShow, closeEvent}) {
                         <HandlerButton eventName={() => deleteMovie(movieId)}>Confirm</HandlerButton>
                     </div>
                 </Card>
-            </CenterCard> </>}
+            </CenterCard> </>
+            }
         </>
     )
 }

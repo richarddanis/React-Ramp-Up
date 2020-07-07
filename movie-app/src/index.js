@@ -9,14 +9,12 @@ import '../node_modules/uikit/dist/js/uikit-icons.min.js';
 import thunk from 'redux-thunk';
 import detailsReducer from './store/reducers/detail';
 import movieReducer from './store/reducers/movie';
-import movieFormReducer from './store/reducers/formmodal';
 import {createStore, combineReducers, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
 
 const rootReducer = combineReducers({
      detailsReducer, 
-     movies: movieReducer,
-     movieForm: movieFormReducer
+     movies: movieReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

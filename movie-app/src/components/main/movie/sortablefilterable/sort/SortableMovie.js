@@ -15,7 +15,7 @@ function SortableMovie({sortAction}) {
                 <button style={{backgroundColor: "transparent"}} className="uk-button" type="button">
                     <span style={{color: "white"}}>{buttonName}</span>
                 </button>
-                <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;">
+                <div uk-dropdown="mode: click; boundary: ! .uk-button-group; boundary-align: true;" style={{backgroundColor: "#232323"}}>
                     <ul className="uk-nav uk-dropdown-nav">
                         <button className="uk-active" value='release_date' name='Release date' onClick={(e) => actionAndButtonNameChange(e)}>Relase date</button>
                         <button className="uk-active" value='rating' name='Rating' onClick={(e) => actionAndButtonNameChange(e)}>Rating</button>

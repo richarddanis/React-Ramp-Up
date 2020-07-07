@@ -3,6 +3,7 @@ import MovieCard from "./list/MovieCard";
 import {useSelector, useDispatch} from 'react-redux';
 import * as actionType from '../../../store/actions/actions'
 import SortAndFilterSection from "./sortablefilterable/SortAndFilterSection";
+import movie from "../../../store/reducers/movie";
 
 function MovieNumber({moviesAmount}) {
     return (
@@ -26,6 +27,7 @@ export const MovieSection = () => {
         dispatch(actionType.fetchMovies())
     }, [dispatch]);
 
+    console.log(movies);
     return (
         <div className="uk-container-expand uk-padding uk-panel" style={{backgroundColor: '#232323'}}>
             <SortAndFilterSection/>
