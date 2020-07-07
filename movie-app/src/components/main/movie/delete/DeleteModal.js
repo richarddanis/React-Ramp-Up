@@ -17,10 +17,7 @@ function DeleteMovieSection({movieId, isShow, closeEvent}) {
             {isShow && <> <CenterCard>
                 <Card closeEvent={closeEvent}>
                     <div>
-                        <h1
-                            style={{
-                            color: 'white'
-                        }}>Delete movie</h1>
+                        <h1 className="color-white">Delete movie</h1>
                         <p>Are you sure want to delete the movie?</p>
                         <HandlerButton eventName={() => deleteMovie(movieId)}>Confirm</HandlerButton>
                     </div>

@@ -112,9 +112,3 @@ function fetchMovieDetails(movie){
     payload: movie
   }
 }
-  
-function fetchMovieError() {
-    return {
-      type: FETCH_MOVIE_ERROR
-    }
-}

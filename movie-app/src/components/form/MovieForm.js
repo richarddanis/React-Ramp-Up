@@ -8,6 +8,7 @@ import {useDispatch} from 'react-redux';
 import * as actionType from '../../store/actions/actions';
 
 function MovieForm() {
+
     const dispatch = useDispatch();
 
     const movie = useSelector(state => state.movieForm.movie)
@@ -45,66 +46,54 @@ function MovieForm() {
                                 color: 'white'
                             }}
                                 className="uk-card-title">{title}</h3>
-                            {/* Movie Id*/}
+                        {/* Movie Id*/}
                             {movie.id !== undefined  && <> <Input
                                 title={"MOVIE ID"}
                                 name={"Id"}
                                 type={"text"}
-                                value={movie.id}
-                                onChange={() => {
-                                console.log('Title change')
-                            }}/> </>}
-                             {/* Movie Title*/}
+                                value={movie.id}/> </>}
+                        {/* Movie Title*/}
                             <Input
                                 name={"title"}
                                 type={"text"}
                                 value={movie.title}
-                                onChange={() => {
-                                console.log('Title change')
-                            }}
                                 placeholder={'Title here'}
-                                title={'TITLE'}/> {/* Release year */}
+                                title={'TITLE'}/> 
+                        {/* Release year */}
                             <Input
                                 name={"release"}
                                 type={"number"}
                                 value={movie.release_date}
-                                onChange={() => {
-                                console.log('Release year change')
-                            }}
                                 placeholder={'Release year here'}
-                                title={'RELEASE DATE'}/> {/* Movie year */}
+                                title={'RELEASE DATE'}/>
+                        {/* Movie year */}
                             <Input
                                 name={"movieurl"}
                                 type={"text"}
                                 value={movie.poster_path}
-                                onChange={() => {
-                                console.log('Movie year change')
-                            }}
                                 placeholder={'Movie URL here...'}
-                                title={'MOVIE URL'}/> {/* Genre option */}
+                                title={'MOVIE URL'}/> 
+                        {/* Genre option */}
                             <Select
                                 options={genreOptions}
                                 placeholder={"Select genre..."}
                                 title={"Genre"}
-                                name={"genre"}/> {/* Overview */}
+                                name={"genre"}/> 
+                        {/* Overview */}
                             <Input
                                 name={"overview"}
                                 type={"text"}
                                 value={movie.overview}
-                                onChange={() => {
-                                console.log('Overview change')
-                            }}
                                 placeholder={'Overview here'}
-                                title={'OVERVIEW'}/> {/*Runtime */}
+                                title={'OVERVIEW'}/>
+                        {/*Runtime */}
                             <Input
                                 name={"runtime"}
                                 type={"number"}
                                 value={movie.runtime}
-                                onChange={() => {
-                                console.log('Runtime change')
-                            }}
                                 placeholder={'Runtime here...'}
                                 title={'RUNTIME'}/>
+                        
                             <div className="uk-button-group uk-margin uk-float-right">
                                 <div className="uk-padding-small">
                                     <button

@@ -1,5 +1,4 @@
-import React, {useState} from "react";
-import "../../../style/move-form.css";
+import React from "react";
 import HandlerButton from "../../util/HandlerButton";
 import {useDispatch} from 'react-redux';
 import * as actionType from '../../../store/actions/actions';

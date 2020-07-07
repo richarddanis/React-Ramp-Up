@@ -23,7 +23,7 @@ function MovieDetail({movie}){
                             <canvas width="" height=""></canvas>
                         </div>
                         <div className="uk-card-body" style={{color: 'white'}}>
-                            <h3 style={{color:'white'}} className="uk-card-title">{[`${movie.title}`,`${movie.vote_average}`].join(' ')}</h3>
+                            <h3 className="uk-card-title">{[`${movie.title}`,`${movie.vote_average}`].join(' ')}</h3>
                             <p>{movie.genres.map(genre => genre).join(' & ')}</p>
                             <span style={{color: '#F65261'}}>{movie.release_date}</span>
                             <p>{movie.overview}</p>

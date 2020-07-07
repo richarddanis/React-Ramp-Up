@@ -9,11 +9,7 @@ function Card(props) {
              && 
              <> 
              <div>
-                <div
-                    className="uk-card-default uk-card-body"
-                    style={{
-                    backgroundColor: '#232323'
-                }}>
+                <div className="uk-card-default uk-card-body" style={{backgroundColor: "#232323"}}>
                     <div className="uk-card-badge">
                     <HandlerButton eventName={props.closeEvent}>X</HandlerButton>
                     </div>
