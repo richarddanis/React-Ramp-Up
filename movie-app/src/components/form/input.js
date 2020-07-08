@@ -1,25 +1,23 @@
 import React from "react";
+import { useField } from 'formik';
 
-const Input = props => {
+const TextInput = ({label, ...props}) => {
+    const [field, meta, helpers]= useField(props);
+
     return (
-        <div className="uk-margin">
-            <div className="uk-margin-small">
-                <label className="uk-form-label" htmlFor="form-stacked-text">
-                    <span>{props.title}</span>
-                </label>
+        <>
+            <div className="uk-margin">
+                <div className="uk-margin-small">
+                    <label className="uk-form-label" htmlFor="form-stacked-text">
+                        <span>{label}</span>
+                    </label>
+                </div>
+                <div className="uk-form-controls">
+                    <input className="uk-input uk-border-rounded"/>
+                </div>
             </div>
-            <div className="uk-form-controls">
-                <input className="uk-input uk-border-rounded"
-                    id={props.name}
-                    name={props.name}
-                    type={props.inputType}
-                    defaultValue={props.defaultValue}
-                    onChange={(e) => e.target.value}
-                    placeholder={props.placeholder}
-                    {...props}/>
-            </div>
-        </div>
+        </>
     );
 };
 
-export default Input;
+export default TextInput;
