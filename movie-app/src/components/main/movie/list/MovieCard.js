@@ -1,49 +1,25 @@
 import React, {useState} from "react";
 import HandlerButton from "../../../util/HandlerButton";
 import Card from "../../../util/Card";
-import MovieForm from "../../../form/MovieForm";
-import { useCountRender } from "../../../util/useCountRender";
+import {useDispatch} from 'react-redux';
+import * as actionType from '../../../../store/actions/actions';
+import DeleteMovieSection from "../delete/DeleteModal";
 
-function DeleteSection({movieId}) {
+function CardActions({movie}) {
+    const [isShowDeleteModal, setShowDeleteModal] = useState(false);
+
+    const dispatch = useDispatch();
+
+    const onShowEditMovieFormModal = (movie) => {
+        const isEditableMovie = true;
+        dispatch(actionType.handleShowMovieForm(movie, isEditableMovie));
+    }
+
     return (
         <div>
-            <h1 style={{color: 'white'}}>Delete movie</h1>
-            <p>Are you sure want to delete the movie?</p>
-            <HandlerButton name={'Confirm'} movieId={movieId}/>
-        </div>
-    )
-}
-
-function CardActions({name, movieId}) {
-    const [showAction,
-        setAction] = useState(false);
-    return (
-        <div> 
-            <HandlerButton
-                eventName={() => setAction(!showAction)}
-                name={name}
-                movieId={movieId}/> {showAction && <> <div
-                style={{
-                backgroundColor: '#0008',
-                width: '100%',
-                height: '100%',
-                zIndex: 10,
-                top: 0,
-                left: 0,
-                position: 'fixed'
-            }}>
-                <div className="uk-position-center">
-                    <Card
-                        showCard={showAction}
-                        closeEvent={() => setAction(!showAction)}
-                        id={movieId}>
-                        {{
-                            'Edit': <MovieForm name={name} movieId={movieId} title={'EDIT MOVIE'}/>,
-                            'Delete': <DeleteSection/>
-                        }[name]}
-                    </Card>
-                </div>
-            </div> </>}
+            <HandlerButton eventName={() => onShowEditMovieFormModal(movie)}>Edit</HandlerButton>
+            <HandlerButton eventName={() => setShowDeleteModal(!isShowDeleteModal)}>Delete</HandlerButton>
+            <DeleteMovieSection isShow={isShowDeleteModal} movieId={movie.id} closeEvent={() => setShowDeleteModal(!isShowDeleteModal)}/>
         </div>
     );
 }
@@ -52,54 +28,39 @@ function MovieCard({movie, detailsEvent}) {
     const [showMovieActions,
         setMovieActionVisibility] = useState(false);
 
-    useCountRender(movie.id);
-
     return (
         <div>
-            <div
-                onClick={() => detailsEvent(movie.id)}
-                className="uk-card uk-card-default"
-                style={{
-                backgroundColor: 'transparent',
-                color: '#FFFFFF'
-            }}>
+            <div className="uk-card uk-card-default background-transparent color-white" style={{backgroundColor: 'transparent', color: '#FFFFFF'}}>
                 <div className="uk-card-media-top">
-                    <img src={`${movie.img}`} alt=""/>
+                    <img src={`${movie.poster_path}`} alt=""/>
                     <div className="uk-card-badge">
-                        {!showMovieActions && <> <HandlerButton
-                            eventName={() => setMovieActionVisibility(!showMovieActions)}
-                            name={'...'}
-                            movieId={movie.id}/> </>}
-                        {showMovieActions && <> <div
-                            className="uk-card uk-card-default"
-                            style={{
-                            backgroundColor: '#232323',
-                            color: 'white'
-                        }}>
-                            <Card
-                                showCard={showMovieActions}
-                                closeEvent={() => setMovieActionVisibility(!showMovieActions)}
-                                id={movie.id}>
-                                <CardActions name={'Edit'} movieId={movie.id}/>
-                                <CardActions name={'Delete'} movieId={movie.id}/>
-                            </Card>
-                        </div> </>}
+                        {!showMovieActions && 
+                        <> 
+                            <HandlerButton eventName={() => setMovieActionVisibility(!showMovieActions)}>
+                            ...
+                            </HandlerButton> 
+                        </>}
+                        {showMovieActions && 
+                        <> 
+                            <Card showCard={showMovieActions} closeEvent={() => setMovieActionVisibility(!showMovieActions)}>
+                                <CardActions movie={movie}/>
+                            </Card> 
+                        </>}
                     </div>
                 </div>
-                <div className="uk-card-body">
+                <div className="uk-card-body" onClick={() => detailsEvent(movie.id)}>
                     <div className="uk-child-width-expand" data-uk-grid>
-                        <h3
-                            className="uk-card-title"
-                            style={{
-                            color: '#FFFFFF'
-                        }}>
-                            {movie.title}
+                        <h3 className="uk-card-title">
+                            <span className="color-white">{movie.title}</span>
                         </h3>
-                        <span>
-                            {movie.releaseYear}
-                        </span>
+                            <button className="uk-disabled uk-button uk-button-default uk-button-small uk-border-rounded uk-margin-remove uk-padding-remove" >
+                                <span className="color-white uk-margin-remove uk-padding-remove">{movie.release_date}</span>
+                            </button>
                     </div>
-                    <p>{movie.category}</p>
+                    <p>{movie
+                            .genres
+                            .map(genre => genre)
+                            .join(' & ')}</p>
                 </div>
             </div>
         </div>

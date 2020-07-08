@@ -9,15 +9,11 @@ function Card(props) {
              && 
              <> 
              <div>
-                <div
-                    className="uk-card-default uk-card-body"
-                    style={{
-                    backgroundColor: '#232323'
-                }}>
+                <div className="uk-card-default uk-card-body uk-border-rounded" style={{backgroundColor: "#232323"}}>
                     <div className="uk-card-badge">
-                    <HandlerButton eventName={props.closeEvent} name={'X'} movieId={props.id}/>
+                    <HandlerButton eventName={props.closeEvent}>X</HandlerButton>
                     </div>
-                    <div>
+                    <div className="uk-margin">
                         {props.children}
                     </div>
                 </div>

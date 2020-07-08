@@ -1,101 +1,97 @@
 import React from "react";
-import Input from "./input";
-import Select from "./select";
-import HandlerButton from "../util/HandlerButton";
+import TextInput from "./input";
+import {useSelector} from 'react-redux';
+import CenterCard from "../util/CenterCard";
+import Card from "../util/Card";
+import {useDispatch} from 'react-redux';
+import * as actionType from '../../store/actions/actions';
+import { Formik } from "formik";
 
-function MovieForm({name, movieId, title}) {
+interface Movie {
+    title: String;
+}
 
-    const genderOptions = ["Male", "Female"];
+const MovieForm = () => {
+
+    const dispatch = useDispatch();
+
+    const movie = useSelector(state => state.movies.movie)
+    const isShowForm = useSelector(state => state.movies.isShowModal)
+    const isEditableMovie = useSelector(state => state.movies.isEditableMovie)
+
+    const title = isEditableMovie
+        ? 'EDIT MOVIE'
+        : 'ADD MOVIE';
+
+    const genreOptions = ["Action", "Comedy", "Etc"];
+
+    function handleCloseEvent() {
+        dispatch(actionType.handleCloseMovieForm());
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        const movie = {
+            id: isEditableMovie
+                ? parseInt(e.target.id.value)
+                : undefined,
+            title: e.target.title.value,
+            release_date: e.target.release.value,
+            poster_path: e.target.movieurl.value,
+            genres: [e.target.select.value],
+            overview: e.target.overview.value,
+            runtime: parseInt(e.target.runtime.value)
+        }
+        dispatch(actionType.handleSaveEditFormMovie(movie, isEditableMovie));
+    }
 
     return (
-        <div>
-            <form>
-                <div className="uk-margin">
-                    <h3
-                        style={{
-                        color: 'white'
-                    }}
-                className="uk-card-title">{title}</h3>
-                    {/* Movie Id*/}
-                    {movieId !== null && <Input
-                        title={"MOVIE ID"}
-                        name={"Id"}
-                        value={movieId}
-                        type={"text"}
-                        onChange={() => {
-                        console.log('Title change')
-                        }}/>}
-                    {/* Movie Title*/}
-                    <Input
-                        name={"title"}
-                        type={"text"}
-                        onChange={() => {
-                        console.log('Title change')
-                    }}
-                        placeholder={'Title here'}
-                        title={'TITLE'}/> {/* Release year */}
-                    <Input
-                        name={"release"}
-                        type={"text"}
-                        onChange={() => {
-                        console.log('Release year change')
-                    }}
-                        placeholder={'Release year here'}
-                        title={'RELEASE DATE'}/> {/* Movie year */}
-                    <Input
-                        name={"movieurl"}
-                        type={"text"}
-                        onChange={() => {
-                        console.log('Movie year change')
-                    }}
-                        placeholder={'Movie URL here...'}
-                        title={'MOVIE URL'}/> {/* Gender option */}
-                    <Select
-                        options={genderOptions}
-                        placeholder={"Select gender..."}
-                        title={"GENDER"}
-                        name={"gender"}/> {/* Overview */}
-                    <Input
-                        name={"overview"}
-                        type={"text"}
-                        onChange={() => {
-                        console.log('Overview change')
-                    }}
-                        placeholder={'Overview here'}
-                        title={'OVERVIEW'}/> {/*Runtime */}
-                    <Input
-                        name={"runtime"}
-                        type={"text"}
-                        onChange={() => {
-                        console.log('Runtime change')
-                    }}
-                        placeholder={'Runtime here...'}
-                        title={'RUNTIME'}/>
-                    <div className="uk-button-group uk-margin uk-float-right">
-                        <div className="uk-padding-small">
-                            <button
-                                className="uk-button uk-button-default uk-border-rounded"
-                                style={{
-                                backgroundColor: 'transparent',
-                                borderColor: '#F65261',
-                                color: '#F65261'
-                            }}>
-                                Reset
-                            </button>
-                        </div>
-                        <div className="uk-padding-small">
-                            <HandlerButton
-                                style={{
-                                backgroundColor: '#F65261',
-                                color: 'white',
-                                borderColor: 'transparent'
-                            }}
-                                name={name}
-                                movieId={movieId}/>
-                        </div>
+        <div>{isShowForm && <> <CenterCard>
+                <Card closeEvent={handleCloseEvent}>
+                    <div className="uk-width-large ">
+                        <Formik initialValues={{movie}}>
+                                {({values, handleChange, handleSubmit, handleBlur}) => (
+                                     <div className="uk-margin">
+                                    <form onSubmit={handleSubmit}>
+                                        <h3 style={{color: 'white'}} className="uk-card-title">{title}</h3>
+                                        <textInput 
+                                                name="movie.title"
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.movie.title}
+                                                /> 
+                                        <div className="uk-button-group uk-margin uk-float-right">
+                                            <div className="uk-padding-small">
+                                                <button
+                                                    className="uk-button uk-button-default uk-border-rounded"
+                                                    style={{
+                                                    backgroundColor: 'transparent',
+                                                    borderColor: '#F65261',
+                                                    color: '#F65261'
+                                                }}
+                                                    type="reset">
+                                                    Reset
+                                                </button>
+                                            </div>
+                                            <div className="uk-padding-small">
+                                                <button
+                                                    type="submit"
+                                                    value="Submit"
+                                                    className="uk-button uk-border-rounded color-salmon">
+                                                    Submit
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div className="uk-position-center-right-out">
+                                        <pre>{JSON.stringify(values, null, 2)}</pre>
+                                    </div>
+                                    </div>
+                                )}
+                        </Formik>
                     </div>
-                </div>
-            </form>
+                </Card>
+            </CenterCard> </>}
         </div>
     );
 }
