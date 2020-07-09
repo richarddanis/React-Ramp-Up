@@ -24,6 +24,7 @@ export const MovieSection = () => {
 
     useEffect(() => {
         dispatch(actionType.fetchMovies())
+        console.log("called");
     }, [dispatch]);
 
     return (
@@ -39,3 +40,5 @@ export const MovieSection = () => {
         </div>
     )
 }
+
+export default MovieSection;

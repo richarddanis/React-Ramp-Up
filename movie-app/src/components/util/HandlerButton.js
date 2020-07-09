@@ -3,7 +3,7 @@ import React from "react";
 const HandlerButton = props => {
     return (
         <button
-            onClick={(event) => {props.eventName(event)}}
+            onClick={() => {props.eventName()}}
             className="uk-button background-transparent">
             {props.children}
         </button>

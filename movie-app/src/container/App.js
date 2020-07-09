@@ -1,11 +1,11 @@
 import React from 'react';
 import Footer from "../components/footer/Footer";
 import HeaderFacade from "../components/header/HeaderFacade";
-import {MovieSection} from "../components/main/movie/MovieSection";
 import MovieForm from "../components/form/MovieForm";
+import MovieSection from "../components/main/movie/MovieSection";
 import "../style/index.css";
-class App extends React.Component {
-    render() {
+
+const App = () => {
         return (
                 <div className="uk-container-expand">
                     <HeaderFacade/>
@@ -14,7 +14,6 @@ class App extends React.Component {
                     <Footer/>
                 </div>
         );
-    }
 }
 
 export default App;
