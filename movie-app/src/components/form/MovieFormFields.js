@@ -5,6 +5,7 @@ import FormButton from "./components/formButton";
 import PropTypes from 'prop-types';
 
 function MovieFormFields({values, handleSubmit, setFieldValue, resetForm}) {
+    const newDate = new Date();
     return ( 
             <div className="uk-margin">
                 <form onSubmit={handleSubmit}>
@@ -29,7 +30,7 @@ function MovieFormFields({values, handleSubmit, setFieldValue, resetForm}) {
                         name="movie.release_date"
                         label="RELEASE YEAR"
                         type="date"
-                        values={values.movie.release_date || ""}
+                        values={values.movie.release_date || {newDate}}
                     />
                 {/* URL */}
                     <TextInput

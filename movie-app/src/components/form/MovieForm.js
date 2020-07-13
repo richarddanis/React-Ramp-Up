@@ -17,8 +17,6 @@ const MovieForm = () => {
         ? 'EDIT MOVIE'
         : 'ADD MOVIE';
 
-        console.log('state.movies.isEditableMovie');
-
     return (
         <MovieFormFacade>
             <Formik initialValues={{movie, title}} 

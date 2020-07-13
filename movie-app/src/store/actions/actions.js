@@ -42,16 +42,7 @@ export const handleMovieDetailsLoad = (movieId) => {
 
 export const handleSaveEditFormMovie = (movie, isNewMovie) => {
   return dispatch => {
-    if(!isNewMovie){
-      const resource = 'http://localhost:4000/movies';
-      axios.post(resource, movie)
-      .then(response => {
-        dispatch(fetchMovies())
-      })
-      .catch(error =>{
-        dispatch(() => console.log(error.response))
-      });
-    } else {
+    if(isNewMovie){
       const resource = 'http://localhost:4000/movies';
       axios.put(resource, movie)
       .then(response => {
@@ -59,6 +50,15 @@ export const handleSaveEditFormMovie = (movie, isNewMovie) => {
       })
       .catch(error =>{
         dispatch(() => console.log(error.response.request.responseText))
+      });
+    } else {
+      const resource = 'http://localhost:4000/movies';
+      axios.post(resource, movie)
+      .then(response => {
+        dispatch(fetchMovies())
+      })
+      .catch(error =>{
+        dispatch(() => console.log(error.response))
       });
     }
   }
