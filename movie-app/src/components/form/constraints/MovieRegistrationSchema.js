@@ -14,7 +14,11 @@ const MovieRegistrationSchema = Yup.object().shape({
                 .min(2, 'Too Short!')
                 .required('Required'),
         runtime: Yup.number()
-                .required('Required')
+                .required('Required'),
+        genre: Yup.array()
+                .required('Required'),
+        release_date: Yup.date()
+                .required('Required'),
     })
 });
 
