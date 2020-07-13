@@ -21,9 +21,7 @@ const MovieForm = () => {
         <MovieFormFacade>
             <Formik initialValues={{movie, title}} 
                 validationSchema={movieRegistrationSchema}
-                onSubmit={(values, { setSubmitting }) => {
-                                dispatch(actionType.handleSaveEditFormMovie(values.movie));
-                            }}
+                onSubmit={(values) => {dispatch(actionType.handleSaveEditFormMovie(values.movie));}}
                 children = { props => <MovieFormFields {...props}/>}
             />
         </MovieFormFacade>
