@@ -40,16 +40,16 @@ export const handleMovieDetailsLoad = (movieId) => {
   }
 }
 
-export const handleSaveEditFormMovie = (movie, isEditableMovie) => {
+export const handleSaveEditFormMovie = (movie, isNewMovie) => {
   return dispatch => {
-    if(isEditableMovie){
+    if(!isNewMovie){
       const resource = 'http://localhost:4000/movies';
       axios.post(resource, movie)
       .then(response => {
         dispatch(fetchMovies())
       })
       .catch(error =>{
-        dispatch(() => console.log(error.response.request.responseText))
+        dispatch(() => console.log(error.response))
       });
     } else {
       const resource = 'http://localhost:4000/movies';

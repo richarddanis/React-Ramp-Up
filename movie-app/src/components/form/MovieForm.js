@@ -11,17 +11,20 @@ const MovieForm = () => {
     const dispatch = useDispatch();
 
     const movie = useSelector(state => state.movies.movie)
-    const isEditableMovie = useSelector(state => state.movies.isEditableMovie)
+    const isNewMovie = useSelector(state => state.movies.isEditableMovie)
 
-    const title = isEditableMovie
+    const title = isNewMovie
         ? 'EDIT MOVIE'
         : 'ADD MOVIE';
+
+        console.log('state.movies.isEditableMovie');
 
     return (
         <MovieFormFacade>
             <Formik initialValues={{movie, title}} 
                 validationSchema={movieRegistrationSchema}
-                onSubmit={(values) => {dispatch(actionType.handleSaveEditFormMovie(values.movie));}}
+                onSubmit={(values) => {
+                    dispatch(actionType.handleSaveEditFormMovie(values.movie, isNewMovie));}}
                 children = { props => <MovieFormFields {...props}/>}
             />
         </MovieFormFacade>
