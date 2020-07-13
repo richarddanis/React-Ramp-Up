@@ -8,15 +8,12 @@ const MovieRegistrationSchema = Yup.object().shape({
                 .required('Required'),
         poster_path: Yup.string()
                 .min(2, 'Too Short!')
-                .max(50, 'Too Long!')
+                .max(100, 'Too Long!')
                 .required('Required'),
         overview: Yup.string()
                 .min(2, 'Too Short!')
-                .max(60, 'Too Long!')
                 .required('Required'),
         runtime: Yup.number()
-                .min(2, 'Too Short!')
-                .max(60, 'Too Long!')
                 .required('Required')
     })
 });

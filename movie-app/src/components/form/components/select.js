@@ -1,6 +1,6 @@
 import React from "react";
-import { Field } from 'formik';
-
+import {Field} from "formik";
+import {genres} from "../../util/genres";
 
 const Select = props => {
     return (
@@ -11,17 +11,17 @@ const Select = props => {
                 </label>
             </div>
             <div className="uk-border-rounded">
-                    <Field as="select" className="uk-select uk-border-rounded" name="movie.select">
-                        <option value="" data-disabled>Select genre...</option>
-                        {props
-                            .options
-                            .map(option => {
-                                return <option key={option} value={option} label={option}>{option}</option>
-                            })}
-                    </Field>
+                <Field as="select" name="movie.genres" className="uk-select uk-border-rounded"
+                    onChange={e => props.setFieldValue("movie.genres", [].slice.call(e.target.selectedOptions).map(option => option.value))} multiple={true}>
+                    {genres.map(genre => (
+                        <option key={genre.id} value={genre.value}>
+                            {genre.title}
+                        </option>
+                    ))}
+                </Field>
             </div>
         </div>
-        )
-    };
+    )
+};
 
 export default Select;

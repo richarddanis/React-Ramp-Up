@@ -16,17 +16,16 @@ const MovieForm = () => {
     const title = isEditableMovie
         ? 'EDIT MOVIE'
         : 'ADD MOVIE';
-    
-    const genreOptions = ["Action", "Comedy", "Etc"];
 
     return (
         <MovieFormFacade>
-            <Formik initialValues={{movie, genreOptions, title}} 
+            <Formik initialValues={{movie, title}} 
+                setFieldValue
                 validationSchema={movieRegistrationSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                                console.log('onSubmit: ',values.movie);
+                                console.table(values);
                                 setSubmitting(false); 
-                                dispatch(actionType.handleSaveEditFormMovie(movie));
+                                dispatch(actionType.handleSaveEditFormMovie(values.movie));
                             }}
                 children = { props => <MovieFormFields {...props}/>}
             />

@@ -2,8 +2,9 @@ import React from "react";
 import TextInput from "./components/input";
 import Select from "./components/select";
 import FormButton from "./components/formButton";
+import PropTypes from 'prop-types';
 
-function MovieFormFields({values, handleSubmit}) {
+function MovieFormFields({values, handleSubmit, setFieldValue}) {
     return ( 
             <div className="uk-margin">
                 <form onSubmit={handleSubmit}>
@@ -13,7 +14,7 @@ function MovieFormFields({values, handleSubmit}) {
                     <TextInput
                         name="movie.id"
                         label="ID"
-                        type="text"
+                        type="number"
                         value={values.movie.id}
                     />}
                 {/* TITLE */}
@@ -41,8 +42,8 @@ function MovieFormFields({values, handleSubmit}) {
                     <Select
                         name="movie.genre"
                         label="GENRE"
-                        options={values.genreOptions}
-                        value={values.movie.genre} 
+                        value={values.movie.genre}
+                        setFieldValue= {setFieldValue}
                     />
                 {/* OVERVIEW */}
                     <TextInput
@@ -69,5 +70,20 @@ function MovieFormFields({values, handleSubmit}) {
             </div>
     )
 }
+
+MovieFormFields.propTypes = {
+    handleSubmit: PropTypes.func,
+    values: PropTypes.shape({
+        title: PropTypes.string,
+        movie: PropTypes.shape({
+            id: PropTypes.number,
+            genre: PropTypes.arrayOf(PropTypes.string),
+            title: PropTypes.string,
+            poster_path: PropTypes.string,
+            runtime: PropTypes.number,
+            overview: PropTypes.string
+        }),
+    })
+};
 
 export default MovieFormFields;

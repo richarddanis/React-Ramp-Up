@@ -44,21 +44,21 @@ export const handleSaveEditFormMovie = (movie, isEditableMovie) => {
   return dispatch => {
     if(isEditableMovie){
       const resource = 'http://localhost:4000/movies';
-      axios.put(resource, movie)
-      .then(response => {
-        dispatch(fetchMovies())
-      })
-      .catch(error =>{
-        dispatch(() => console.log(error))
-      });
-    } else {
-      const resource = 'http://localhost:4000/movies';
       axios.post(resource, movie)
       .then(response => {
         dispatch(fetchMovies())
       })
       .catch(error =>{
-        dispatch(() => console.log(error))
+        dispatch(() => console.log(error.response.request.responseText))
+      });
+    } else {
+      const resource = 'http://localhost:4000/movies';
+      axios.put(resource, movie)
+      .then(response => {
+        dispatch(fetchMovies())
+      })
+      .catch(error =>{
+        dispatch(() => console.log(error.response.request.responseText))
       });
     }
   }
