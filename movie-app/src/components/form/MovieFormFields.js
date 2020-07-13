@@ -1,47 +1,63 @@
 import React from "react";
 import TextInput from "./components/input";
+import Select from "./components/select";
 import FormButton from "./components/formButton";
 
-function MovieFormFields({values, handleChange, handleSubmit, handleBlur, title}) {
+function MovieFormFields({values, handleSubmit}) {
     return ( 
             <div className="uk-margin">
                 <form onSubmit={handleSubmit}>
-                    <h3
-                        style={{
-                        color: 'white'
-                    }}
-                        className="uk-card-title">{title}</h3>
-                    {/* TITLE */}
+                    <h3 className="color-white uk-card-title">{values.title}</h3>
+                {/* MOVIE ID */}
+                    {values.movie.id !== undefined &&
+                    <TextInput
+                        name="movie.id"
+                        label="ID"
+                        type="text"
+                        value={values.movie.id}
+                    />}
+                {/* TITLE */}
                     <TextInput
                         name="movie.title"
                         label="TITLE"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
                         type="text"
-                        value={values.movie.title  || ""}/> {/* RELEASE DATE */}
-                    {/* URL */}
+                        value={values.movie.title  || ""}
+                    /> 
+                {/* RELEASE DATE */}
+                    <TextInput
+                        name="movie.release_date"
+                        label="RELEASE YEAR"
+                        type="date"
+                        values={values.movie.release_date || ""}
+                    />
+                {/* URL */}
                     <TextInput
                         name="movie.poster_path"
                         label="MOVIE URL"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
                         type="text"
-                        value={values.movie.poster_path  || ""}/> {/* GENRE */}
-                    {/* OVERVIEW */}
+                        value={values.movie.poster_path  || ""}
+                    /> 
+                {/* GENRE */}
+                    <Select
+                        name="movie.genre"
+                        label="GENRE"
+                        options={values.genreOptions}
+                        value={values.movie.genre} 
+                    />
+                {/* OVERVIEW */}
                     <TextInput
                         name="movie.overview"
                         label="OVERVIEW"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
                         type="text"
-                        value={values.movie.overview  || ""}/> {/* RUNTIME */}
+                        value={values.movie.overview  || ""}
+                    /> 
+                {/* RUNTIME */}
                     <TextInput
                         name="movie.runtime"
                         label="RUNTIME"
-                        onChange={handleChange}
-                        onBlur={handleBlur}
                         type="number"
-                        value={values.movie.runtime || ""}/>
+                        value={values.movie.runtime || ""}
+                    />
                     <div className="uk-button-group uk-margin uk-float-right">
                         <FormButton type="reset" name="Reset"/>
                         <FormButton type="submit" value="submit" name="Submit"/>

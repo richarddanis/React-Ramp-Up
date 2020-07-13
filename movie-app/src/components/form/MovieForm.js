@@ -22,14 +22,14 @@ const MovieForm = () => {
     return (
         <MovieFormFacade>
             <Formik initialValues={{movie, genreOptions, title}} 
-            validationSchema={movieRegistrationSchema}
-            onSubmit={(values, { setSubmitting }) => {
-                            console.log('onSubmit: ',values.movie);
-                            setSubmitting(false);
-                            dispatch(actionType.handleSaveEditFormMovie(movie));
-                        }}
-            children = { props => <MovieFormFields {...props}/>}
-                    />
+                validationSchema={movieRegistrationSchema}
+                onSubmit={(values, { setSubmitting }) => {
+                                console.log('onSubmit: ',values.movie);
+                                setSubmitting(false); 
+                                dispatch(actionType.handleSaveEditFormMovie(movie));
+                            }}
+                children = { props => <MovieFormFields {...props}/>}
+            />
         </MovieFormFacade>
     );
 }
