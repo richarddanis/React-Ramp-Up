@@ -4,7 +4,7 @@ import Select from "./components/select";
 import FormButton from "./components/formButton";
 import PropTypes from 'prop-types';
 
-function MovieFormFields({values, handleSubmit, setFieldValue}) {
+function MovieFormFields({values, handleSubmit, setFieldValue, resetForm}) {
     return ( 
             <div className="uk-margin">
                 <form onSubmit={handleSubmit}>
@@ -60,7 +60,7 @@ function MovieFormFields({values, handleSubmit, setFieldValue}) {
                         value={values.movie.runtime || ""}
                     />
                     <div className="uk-button-group uk-margin uk-float-right">
-                        <FormButton type="reset" name="Reset"/>
+                        <FormButton type="reset" value="reset" name="Reset" onClick={() => resetForm()}/>
                         <FormButton type="submit" value="submit" name="Submit"/>
                     </div>
                 </form>
