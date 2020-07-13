@@ -15,8 +15,6 @@ const MovieRegistrationSchema = Yup.object().shape({
                 .required('Required'),
         runtime: Yup.number()
                 .required('Required'),
-        genre: Yup.array()
-                .required('Required'),
         release_date: Yup.date()
                 .required('Required'),
     })

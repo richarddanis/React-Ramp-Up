@@ -60,13 +60,10 @@ function MovieFormFields({values, handleSubmit, setFieldValue, resetForm}) {
                         value={values.movie.runtime || ""}
                     />
                     <div className="uk-button-group uk-margin uk-float-right">
-                        <FormButton type="reset" value="reset" name="Reset" onClick={() => resetForm()}/>
+                        <FormButton type="reset" name="Reset" onClick={() => resetForm()}/>
                         <FormButton type="submit" value="submit" name="Submit"/>
                     </div>
                 </form>
-                <div className="uk-position-center-right-out">
-                    <pre>{JSON.stringify(values, null, 2)}</pre>
-                </div>
             </div>
     )
 }

@@ -20,11 +20,8 @@ const MovieForm = () => {
     return (
         <MovieFormFacade>
             <Formik initialValues={{movie, title}} 
-                setFieldValue
                 validationSchema={movieRegistrationSchema}
                 onSubmit={(values, { setSubmitting }) => {
-                                console.table(values);
-                                setSubmitting(false); 
                                 dispatch(actionType.handleSaveEditFormMovie(values.movie));
                             }}
                 children = { props => <MovieFormFields {...props}/>}
