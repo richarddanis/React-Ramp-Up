@@ -17,6 +17,9 @@ const MovieRegistrationSchema = Yup.object().shape({
                 .required('Required'),
         release_date: Yup.date()
                 .required('Required'),
+        genre: Yup.array()
+                .required('Required')
+                .min(1, "Gernes does not contain 1 required value(s)")
     })
 });
 
