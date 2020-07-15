@@ -39,3 +39,5 @@ export const MovieSection = () => {
         </div>
     )
 }
+
+export default MovieSection;

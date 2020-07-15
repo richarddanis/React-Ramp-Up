@@ -40,16 +40,16 @@ export const handleMovieDetailsLoad = (movieId) => {
   }
 }
 
-export const handleSaveEditFormMovie = (movie, isEditableMovie) => {
+export const handleSaveEditFormMovie = (movie, isNewMovie) => {
   return dispatch => {
-    if(isEditableMovie){
+    if(isNewMovie){
       const resource = 'http://localhost:4000/movies';
       axios.put(resource, movie)
       .then(response => {
         dispatch(fetchMovies())
       })
       .catch(error =>{
-        dispatch(() => console.log(error))
+        dispatch(() => console.log(error.response.request.responseText))
       });
     } else {
       const resource = 'http://localhost:4000/movies';
@@ -58,7 +58,7 @@ export const handleSaveEditFormMovie = (movie, isEditableMovie) => {
         dispatch(fetchMovies())
       })
       .catch(error =>{
-        dispatch(() => console.log(error))
+        dispatch(() => console.log(error.response))
       });
     }
   }
