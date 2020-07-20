@@ -7,7 +7,11 @@ label > span {
 }
 
 .color-salmon {
-    color: #F65261;
+    color: #F65261 !important;
+}
+
+.color-salmon-border {
+    border-color: #F65261 !important;
 }
 
 .background-transparent {
@@ -15,7 +19,7 @@ label > span {
 }
 
 .background-color-grey {
-    background-color: #232323;
+    background-color: #232323 !important;
 }
 
 .center-card-position {

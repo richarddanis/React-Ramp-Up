@@ -1,4 +1,5 @@
 import axios from 'axios';
+import history from '../../components/util/history';
 
 export const FILTER_MOVIE = 'FILTER';
 export const SORT_MOVIE = 'SORT';
@@ -27,12 +28,27 @@ export const fetchMovies = (queryParam = '') => {
   }
 }
 
+export const searchMovie = (queryParam = '') => {
+  return dispatch => {
+      const resource = 'http://localhost:4000/movies?search=' + queryParam + '&searchBy=title'
+      axios.get(resource)
+      .then(response => {
+        dispatch(fetchMovieAction(response.data));
+        history.push('/search/' + queryParam);
+      })
+      .catch(error =>{
+        dispatch(() => console.log('something went wrong while initing movies'))
+      });
+  }
+}
+
 export const handleMovieDetailsLoad = (movieId) => {
   return dispatch => {
     const resource = 'http://localhost:4000/movies/' + movieId;
     axios.get(resource)
     .then(response => {
       dispatch(fetchMovieDetails(response.data))
+      history.push('/film/id/' + movieId);
     })
     .catch(error =>{
       dispatch(() => console.log('something went wrong while initing movies'))
@@ -72,6 +88,7 @@ export const handleShowMovieForm = (movie = {}, isEditableMovie = false) => {
 
 export const handleCloseDetailsSection = () => {
   return dispatch => {
+    history.replace('/')
     dispatch(closeMovieDetailsAction())
   }
 }

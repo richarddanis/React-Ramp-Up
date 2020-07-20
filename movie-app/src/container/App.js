@@ -7,12 +7,12 @@ import "../style/index.css";
 
 const App = () => {
         return (
-                <div className="uk-container-expand">
-                    <HeaderFacade/>
-                    <MovieForm/>
-                    <MovieSection/>
-                    <Footer/>
-                </div>
+        <div className="uk-container-expand">
+                <HeaderFacade/>
+                <MovieForm/>
+                <MovieSection/>
+                <Footer/>
+        </div>
         );
 }
 

@@ -1,21 +1,46 @@
 import React from "react";
+import {useFormik} from 'formik';
+import {useDispatch} from 'react-redux';
+import * as actionType from '../../../store/actions/actions';
 
-function Searchbar() {
+const Searchbar = () => {
+    const dispatch = useDispatch();
+
+    const formik = useFormik({
+        initialValues: {
+            search: ''
+        },
+        onSubmit: values => {
+            dispatch(actionType.searchMovie(values.search));
+        }
+    });
+
     return (
-        <div
-            className="uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top uk-padding-large uk-padding-remove-top"
-            data-uk-grid>
-            <div className="uk-padding-small">
-                <input className="uk-input uk-form-width-large uk-float-right uk-border-rounded" type="text"
-                       placeholder="Find your movie!"/>
+        <form onSubmit={formik.handleSubmit}>
+            <div
+                className="uk-grid-collapse uk-child-width-expand@s uk-text-center uk-margin-large-top uk-padding-large uk-padding-remove-top"
+                data-uk-grid>
+                <div className="uk-padding-small">
+                    <input
+                        className="uk-input uk-form-width-large uk-float-right uk-border-rounded"
+                        type="text"
+                        initialValues={formik.values.search}
+                        name="search"
+                        onChange={formik.handleChange}
+                        placeholder="Find your movie!"/>
+                </div>
+                <div className="uk-padding-small">
+                    <button
+                        type="submit"
+                        className="uk-button uk-float-left uk-border-rounded"
+                        style={{
+                        backgroundColor: '#F65261'
+                    }}>
+                        <span className="color-white">Search</span>
+                    </button>
+                </div>
             </div>
-            <div className="uk-padding-small">
-                <button className="uk-button uk-float-left uk-border-rounded"
-                        style={{backgroundColor: '#F65261'}}>
-                    <span style={{color: "white"}}>Search</span>
-                </button>
-            </div>
-        </div>
+        </form>
     );
 }
 

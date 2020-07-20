@@ -15,7 +15,8 @@ const FormFacede = (props) => {
     }
 
     return (
-        <div>{isShowForm && <> 
+        <div>{isShowForm && 
+        <> 
             <CenterCard>
                     <Card closeEvent={handleCloseEvent}>
                         <div className="uk-width-large ">
@@ -23,7 +24,8 @@ const FormFacede = (props) => {
                         </div>
                     </Card>
             </CenterCard>
-        </>}
+        </>
+        }
         </div>
     );
 }
