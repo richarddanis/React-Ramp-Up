@@ -5,30 +5,22 @@ import MovieForm from "../components/form/MovieForm";
 import MovieSection from "../components/main/movie/MovieSection";
 import "../style/index.css";
 import MovieDetails from './../components/header/details/MovieDetails';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import {Switch, Route, Redirect} from 'react-router-dom';
 
 const App = () => {
-    return (
-        <Router>
-            <Switch>
-                <Route path="/">
-                    <div className="uk-container-expand">
-                        <Switch>
-                            <Route path="/" exact>
-                                <Header/>
-                            </Route>
-                            <Route path="/film/:id">
-                                <MovieDetails/>
-                            </Route>
-                        </Switch>
-                        <MovieForm/>
-                        <MovieSection/>
-                        <Footer/>
-                    </div>
-                </Route>
-            </Switch>
-        </Router>
-    );
+    return ( <> <Switch>
+            <div className="uk-container-expand">
+                <Switch>
+                    <Route exact path="/film/:id">
+                        <MovieDetails/>
+                    </Route>
+                    <Route exact path="/" >
+                        <Header/>
+                    </Route>
+                    <Redirect to='/not-found'/>
+                </Switch>
+            </div>
+    </Switch> < MovieForm /> <MovieSection/> < Footer /> </>);
 }
 
 export default App;
