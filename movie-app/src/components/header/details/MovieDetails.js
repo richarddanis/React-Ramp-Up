@@ -1,18 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import NetflixRouletteName from "../../util/NetflixRouletteName";
 import Card from "../../util/Card";
 import {useDispatch} from 'react-redux';
 import * as actionType from '../../../store/actions/actions'
+import {useSelector} from 'react-redux';
+import { useParams} from "react-router";
 
-function MovieDetail({movie}){
+const MovieDetails = () => {
     const dispatch = useDispatch();
+    const movie = useSelector(state => state.detailsReducer.details);
+    const { id } = useParams();
+
 
     function handleCloseMovieDetails(){
         dispatch(actionType.handleCloseDetailsSection());
     }
 
+    useEffect(() => {
+        dispatch(actionType.handleMovieDetailsLoad(id));
+    }, [id, dispatch]);
+
     return(
         <div className="uk-container-expand uk-panel" >
+            {console.log('Movie: '+ movie)}
             <Card closeEvent={handleCloseMovieDetails}>
                  <div className="uk-grid-small uk-child-width-expand@s" data-uk-grid>
                     <NetflixRouletteName/>
@@ -34,4 +44,4 @@ function MovieDetail({movie}){
     );
 }
 
-export default MovieDetail;
+export default MovieDetails;

@@ -48,7 +48,6 @@ export const handleMovieDetailsLoad = (movieId) => {
     axios.get(resource)
     .then(response => {
       dispatch(fetchMovieDetails(response.data))
-      history.push('/film/id/' + movieId);
     })
     .catch(error =>{
       dispatch(() => console.log('something went wrong while initing movies'))

@@ -10,7 +10,7 @@ import detailsReducer from './store/reducers/detail';
 import movieReducer from './store/reducers/movie';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
-import RoutingProvider from './container/RoutingProvider';
+import App from './container/App';
 
 const rootReducer = combineReducers({
      detailsReducer, 
@@ -30,6 +30,6 @@ const logger = store => {
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
-ReactDOM.render(<Provider store={store}><RoutingProvider/></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
 
 serviceWorker.unregister();

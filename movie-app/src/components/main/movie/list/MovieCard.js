@@ -4,6 +4,7 @@ import Card from "../../../util/Card";
 import {useDispatch} from 'react-redux';
 import * as actionType from '../../../../store/actions/actions';
 import DeleteMovieSection from "../delete/DeleteModal";
+import {Link} from 'react-router-dom';
 
 function CardActions({movie}) {
     const [isShowDeleteModal, setShowDeleteModal] = useState(false);
@@ -24,7 +25,7 @@ function CardActions({movie}) {
     );
 }
 
-function MovieCard({movie, detailsEvent}) {
+function MovieCard({movie}) {
     const [showMovieActions,
         setMovieActionVisibility] = useState(false);
 
@@ -48,7 +49,8 @@ function MovieCard({movie, detailsEvent}) {
                         </>}
                     </div>
                 </div>
-                <div className="uk-card-body" onClick={() => detailsEvent(movie.id)}>
+                <div className="uk-card-body">
+                    <Link to={`/film/${movie.id}`}>
                     <div className="uk-child-width-expand" data-uk-grid>
                         <h3 className="uk-card-title">
                             <span className="color-white">{movie.title}</span>
@@ -57,6 +59,7 @@ function MovieCard({movie, detailsEvent}) {
                                 <span className="color-white uk-margin-remove uk-padding-remove">{movie.release_date}</span>
                             </button>
                     </div>
+                    </Link>
                     <p>{movie
                             .genres
                             .map(genre => genre)
