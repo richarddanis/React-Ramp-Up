@@ -9,7 +9,7 @@ const RoutingProvider = () => {
         <div>
             <BrowserRouter history={history}>
                 <Switch>
-                    <Route exact path={['/', '/film/:id', '/search']} component={App} />
+                    <Route exact path={['','/', '/film/:id', '/search']} component={App} />
                     <Route component={Page404} />
                 </Switch>
             </BrowserRouter>

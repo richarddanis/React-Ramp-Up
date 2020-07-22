@@ -87,8 +87,8 @@ export const handleShowMovieForm = (movie = {}, isEditableMovie = false) => {
 
 export const handleCloseDetailsSection = () => {
   return dispatch => {
-    history.replace('/')
     dispatch(closeMovieDetailsAction())
+    history.push('/');
   }
 }
 

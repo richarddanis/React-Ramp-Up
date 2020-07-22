@@ -1,25 +1,17 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import NetflixRouletteName from "../../util/NetflixRouletteName";
 import Card from "../../util/Card";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import * as actionType from '../../../store/actions/actions'
-import {useSelector} from 'react-redux';
-import { useParams} from "react-router";
+import {useParams} from "react-router";
 
-const MovieDetails = () => {
+const Movie = ({movie}) => {
+
     const dispatch = useDispatch();
-    const movie = useSelector(state => state.detailsReducer.details);
-    const { id } = useParams();
-
 
     function handleCloseMovieDetails(){
         dispatch(actionType.handleCloseDetailsSection());
     }
-
-    useEffect(() => {
-        dispatch(actionType.handleMovieDetailsLoad(id));
-    }, [id, dispatch]);
-
     return(
         <div className="uk-container-expand uk-panel" >
             {console.log('Movie: '+ movie)}
@@ -40,6 +32,27 @@ const MovieDetails = () => {
                         </div>
                     </div>
             </Card>
+        </div>
+    );
+}
+
+const loading = () => {
+
+}
+
+const MovieDetails = () => {
+    const dispatch = useDispatch();
+    const movie = useSelector(state => state.detailsReducer.details);
+    const isLoaded = useSelector(state => state.detailsReducer.isLoaded);
+    const { id } = useParams();
+
+    useEffect(() => {
+        dispatch(actionType.handleMovieDetailsLoad(id));
+    }, [dispatch,id]);
+
+    return(
+        <div>
+        {isLoaded ? <Movie movie={movie}/>  : <h1>Loading</h1>}
         </div>
     );
 }
