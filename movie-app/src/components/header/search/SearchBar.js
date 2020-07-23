@@ -30,7 +30,6 @@ const Searchbar = () => {
           <input
             className="uk-input uk-form-width-large uk-float-right uk-border-rounded"
             type="text"
-            initialValues={formik.values.search}
             name="search"
             onChange={formik.handleChange}
             placeholder="Find your movie!"
