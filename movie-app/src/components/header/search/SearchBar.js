@@ -1,22 +1,35 @@
-import React from "react";
+import React, { useEffect, useCallback } from "react";
 import { useFormik } from "formik";
 import { useDispatch } from "react-redux";
 import * as actionType from "../../../store/actions/actions";
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 
 const Searchbar = () => {
   const dispatch = useDispatch();
+  const { queryParam } = useParams();
   const history = useHistory();
+
+  const handleMovieSearch = useCallback(
+    (queryParam) => {
+      const inputValue = queryParam;
+      dispatch(actionType.searchMovie(inputValue));
+      const resourceValue =
+        inputValue === ("" || undefined) ? "/" : "/search/" + inputValue;
+      history.push(resourceValue);
+    },
+    [dispatch, history]
+  );
+
+  useEffect(() => {
+    handleMovieSearch(queryParam);
+  }, [queryParam, handleMovieSearch]);
 
   const formik = useFormik({
     initialValues: {
       search: "",
     },
     onSubmit: (values) => {
-      const inputValue = values.search;
-      dispatch(actionType.searchMovie(inputValue));
-      const resourceValue = inputValue === "" ? "/" : "/search/" + inputValue;
-      history.push(resourceValue);
+      handleMovieSearch(values.search);
     },
   });
 

@@ -13,7 +13,7 @@ const App = () => {
       <div className="uk-container-expand">
         <Switch>
           <Switch>
-            <Route exact path={["", "/", "/search/*"]}>
+            <Route exact path={["", "/", "/search", "/search/:queryParam"]}>
               <Header />
             </Route>
             <Route exact path="/film/:id">
