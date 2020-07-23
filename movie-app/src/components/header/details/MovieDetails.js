@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import NetflixRouletteName from "../../util/NetflixRouletteName";
 import Card from "../../util/Card";
 import { useDispatch, useSelector } from "react-redux";

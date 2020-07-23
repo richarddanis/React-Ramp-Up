@@ -13,7 +13,7 @@ const App = () => {
       <div className="uk-container-expand">
         <Switch>
           <Switch>
-            <Route exact path={["", "/"]}>
+            <Route exact path={["", "/", "/search/*"]}>
               <Header />
             </Route>
             <Route exact path="/film/:id">

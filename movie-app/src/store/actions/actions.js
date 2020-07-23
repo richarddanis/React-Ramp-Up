@@ -1,5 +1,4 @@
 import axios from "axios";
-import history from "../../components/util/history";
 
 export const FILTER_MOVIE = "FILTER";
 export const SORT_MOVIE = "SORT";
@@ -39,7 +38,6 @@ export const searchMovie = (queryParam = "") => {
       .get(resource)
       .then((response) => {
         dispatch(fetchMovieAction(response.data));
-        history.push("/search/" + queryParam);
       })
       .catch((error) => {
         dispatch(() =>
