@@ -129,7 +129,7 @@ function closeFormAction() {
   };
 }
 
-function openMovieFormAction(movie, isEditableMovie) {
+export function openMovieFormAction(movie, isEditableMovie) {
   return {
     type: SHOW_MOVIE_MODAL,
     payload: { movie, isEditableMovie },
