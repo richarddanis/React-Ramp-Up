@@ -1,7 +1,7 @@
 import * as actions from '../store/actions/actions';
 
 describe('actions', () => {
-    it('should create an action to add a todo', () => {
+    it('should create an action to open movie form', () => {
       const movie = 'Finish docs'
       const isEditableMovie = true
 
