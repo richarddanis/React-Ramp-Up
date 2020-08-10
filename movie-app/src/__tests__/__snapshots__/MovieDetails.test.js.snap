@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DeleteModals shallow renders app component 1`] = `
+<div
+  className="uk-position-fixed uk-position-top uk-position-left center-card-position"
+  style={
+    Object {
+      "backgroundColor": "#0008",
+    }
+  }
+>
+  <div
+    className="uk-position-center"
+  >
+    <div>
+      <div>
+        <div
+          className="uk-card-default uk-card-body uk-border-rounded"
+          style={
+            Object {
+              "backgroundColor": "#232323",
+            }
+          }
+        >
+          <div
+            className="uk-card-badge"
+          >
+            <button
+              className="uk-button background-transparent"
+              onClick={[Function]}
+            >
+              X
+            </button>
+          </div>
+          <div
+            className="uk-margin"
+          >
+            <div>
+              <h1
+                className="color-white"
+              >
+                Delete movie
+              </h1>
+              <p>
+                Are you sure want to delete the movie?
+              </p>
+              <button
+                className="uk-button background-transparent"
+                onClick={[Function]}
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
